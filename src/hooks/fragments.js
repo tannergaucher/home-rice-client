@@ -15,7 +15,10 @@ export const POST_FRAGMENT = graphql`
       description
       tags
       draft
-      tastes
+      tastes {
+        taste
+        from
+      }
       ingredients {
         ASIN
         quantity

@@ -2,8 +2,31 @@
 
 :root {
   --serif: "Playfair Display", serif;
+  --accent-1: var(--text-color);
 }
 
 body {
   font-family: var(--serif);
+}
+
+.btn {
+  font-family: var(--serif);
+  border-radius: 0;
+}
+
+/* TODO: update semantic styles source */
+summary {
+  font-size: var(--text-xl);
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+}
+
+details > p {
+  padding: var(--space-md);
+}
+
+.card {
+  border: none; /* Fix in semantic-styles */
+  border-radius: 0;
 }
