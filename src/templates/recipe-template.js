@@ -4,12 +4,8 @@ import { recipe } from "../utils/mocks"
 import { AWS_ASSOCIATE_ID } from "../utils/constants"
 import { Layout, SEO, IngredientsForm, Ingredient } from "../components"
 
-/* 
-@architecture Internal CMS (form) => Lambda endpoint + AWS SDK => S3 => Gatsby Build from S3
-*/
-
-const IndexPage = ({ data }) => {
-  console.log("data", data)
+export default function RecipeTemplate({ data, location }) {
+  console.log(recipe)
 
   return (
     <Layout>
