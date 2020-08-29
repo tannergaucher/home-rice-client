@@ -1,46 +1,57 @@
 import React from "react"
+import { Link } from "gatsby"
+import Img from "gatsby-image"
 
-import { Layout, SEO } from "../components"
+import { Layout } from "../components"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <IngredientsForm>
-      <Ingredient
-        text="Holy Basil Seasoning Paste"
-        ASIN="B000EONW02"
-        quantity="1"
-        order="1"
-      />
-      <li>Test</li>
-    </IngredientsForm>
-  </Layout>
-)
+// Query all recipes
+// Render recipes cards
 
-export default IndexPage
+export default function IndexPage({ data }) {
+  console.log(data)
 
-const IngredientsForm = ({ children }) => {
   return (
-    <form method="GET" action="https://www.amazon.com/gp/aws/cart/add.html">
-      <input type="hidden" name="AWSAccessKeyId" value="Access Key ID" />
-      <input type="hidden" name="AssociateTag" value="Associate Tag" />
-      {children}
-      <input
-        className="btn"
-        type="submit"
-        name="add"
-        value="Add to Amazon Cart"
-      />
-    </form>
+    <Layout>
+      <article className="page padding">
+        <div className="container content-grid">
+          {data.allSanityRecipe.edges.map(edge => (
+            <Link
+              key={edge.node.id}
+              style={{ textDecoration: `none` }}
+              to={`/${edge.node.slug.current}`}
+            >
+              <div className="card">
+                <Img fluid={edge.node.mainImage.asset.fluid} />
+                <h2 className="card-heading">{edge.node.title}</h2>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </article>
+    </Layout>
   )
 }
 
-const Ingredient = ({ text, quantity, ASIN, order }) => {
-  return (
-    <>
-      <input type="hidden" name={`ASIN.${order}`} value={ASIN} />
-      <input type="hidden" name={`Quantity.${order}`} value={quantity} />
-      <li>{text}</li>
-    </>
-  )
-}
+export const pageQuery = graphql`
+  query {
+    allSanityRecipe {
+      edges {
+        node {
+          id
+          title
+          subtitle
+          mainImage {
+            asset {
+              fluid {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+          slug {
+            current
+          }
+        }
+      }
+    }
+  }
+`

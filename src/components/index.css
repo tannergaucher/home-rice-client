@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&display=swap");
+
+:root {
+  --serif: "Playfair Display", serif;
+  --accent-1: black;
+  --accent-2: palevioletred;
+}
+
+body {
+  font-family: var(--serif);
+}
+
+.responsive-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.page {
+  margin-top: 0;
+}
+
+.card {
+  border: none;
+}
+
+li {
+  margin-bottom: var(--space-md);
+}

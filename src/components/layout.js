@@ -1,13 +1,30 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import "semantic-styles"
-import "./layout.css"
+import "./index.css"
 
 const Layout = ({ children }) => {
   return (
-    <>
-      <main>{children}</main>
-    </>
+    <div>
+      <header className="header padding container">
+        <Link to="/">
+          <h1 className="text--xxxl">Tanner Gaucher | Untitled Platform</h1>
+        </Link>
+      </header>
+      <main className="main">{children}</main>
+      <br />
+      <footer className="footer padding container">
+        <Link to="/">
+          <h1
+            className="text--xxxl"
+            style={{ marginBottom: `var(--space-lg)` }}
+          >
+            Tanner Gaucher | Untitled Platform
+          </h1>
+        </Link>
+      </footer>
+    </div>
   )
 }
 

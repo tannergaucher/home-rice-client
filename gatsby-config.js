@@ -17,12 +17,21 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,
-        path: `${__dirname}/content`,
+        path: `${__dirname}/src/content`,
+      },
+    },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: `q6bcj0lp`,
+        dataset: `production`,
+        graphqlTag: "default",
       },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-mdx`,
+    `gatsby-transformer-remark`,
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

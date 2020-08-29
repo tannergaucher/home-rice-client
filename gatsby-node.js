@@ -1,29 +1,19 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+// Query all recipes from sanity
+// Create template pages for each recipe
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `Mdx`) {
-    const slug = createFilePath({ node, getNode, basePath: `content` })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug,
-    })
-  }
-}
+const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  //
-  const allPostsQuery = await graphql(`
+
+  // Query all recipes
+  const allRecipe = await graphql(`
     query {
-      allMdx {
+      allSanityRecipe {
         edges {
           node {
-            fields {
-              slug
+            slug {
+              current
             }
           }
         }
@@ -31,12 +21,17 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  allPostsQuery.data.allMdx.edges.forEach(edge => {
+  const recipes = allRecipe.data.allSanityRecipe.edges
+
+  // Create page for each post.
+  recipes.forEach(edge => {
+    console.log(edge)
+
     createPage({
-      path: edge.node.fields.slug,
+      path: `/${edge.node.slug.current}`,
       component: path.resolve(`./src/templates/recipe-template.js`),
       context: {
-        slug: edge.node.fields.slug,
+        slug: edge.node.slug.current,
       },
     })
   })
