@@ -4,9 +4,7 @@ import { recipe } from "../utils/mocks"
 import { AWS_ASSOCIATE_ID } from "../utils/constants"
 import { Layout, SEO, IngredientsForm, Ingredient } from "../components"
 
-export default function RecipeTemplate({ data, location }) {
-  console.log(recipe)
-
+export default function RecipeTemplate({ data }) {
   return (
     <Layout>
       <SEO
@@ -16,11 +14,12 @@ export default function RecipeTemplate({ data, location }) {
       <article className="page padding container">
         <div className="responsive-container">
           <iframe
+            title={data.sanityRecipe.title}
             className="responsive-iframe"
             id="player"
             type="text/html"
             src={`http://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=http:/localhost:8000`}
-            frameborder="0"
+            frameBorder="0"
           ></iframe>
         </div>
         <br />
@@ -37,6 +36,7 @@ export default function RecipeTemplate({ data, location }) {
                   key={ingredient.ASIN}
                   href={`https://www.amazon.com/gp/product/${ingredient.ASIN}/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=${ingredient.ASIN}&linkCode=as2&tag=${AWS_ASSOCIATE_ID}`}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Ingredient
                     text={ingredient.text}
@@ -55,8 +55,6 @@ export default function RecipeTemplate({ data, location }) {
     </Layout>
   )
 }
-
-export default IndexPage
 
 export const pageQuery = graphql`
   query RECIPE_QUERY($slug: String!) {

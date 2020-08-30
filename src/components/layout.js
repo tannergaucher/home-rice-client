@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
     <div>
       <header className="header padding container">
         <Link to="/">
-          <h1 className="text--xxxl">Tanner Gaucher | Untitled Platform</h1>
+          <h1 className="text--xxxl">Untitled Platform</h1>
         </Link>
       </header>
       <main className="main">{children}</main>
@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
             className="text--xxxl"
             style={{ marginBottom: `var(--space-lg)` }}
           >
-            Tanner Gaucher | Untitled Platform
+            Untitled Platform
           </h1>
         </Link>
       </footer>
