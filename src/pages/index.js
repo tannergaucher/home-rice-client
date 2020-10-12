@@ -8,8 +8,6 @@ import { Layout } from "../components"
 // Render recipes cards
 
 export default function IndexPage({ data }) {
-  console.log(data)
-
   return (
     <Layout>
       <article className="page padding">
