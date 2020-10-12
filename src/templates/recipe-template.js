@@ -18,16 +18,18 @@ export default function RecipeTemplate({ data }) {
             className="responsive-iframe"
             id="player"
             type="text/html"
-            src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&modestbranding=1`}
+            src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app`}
             frameBorder="0"
             style={{ marginTop: `var(--space-lg)` }}
           ></iframe>
         </div>
         <br />
-        <h1>{data.sanityRecipe.title}</h1>
-        <h2 className="text--md"> {data.sanityRecipe.subtitle}</h2>
-        <hr />
-        <section>
+        <section className="container">
+          <h1>{data.sanityRecipe.title}</h1>
+          <h2 className="text--md"> {data.sanityRecipe.subtitle}</h2>
+          <hr />
+        </section>
+        <section className="container">
           <h2>Ingredients:</h2>
           <br />
           <IngredientsForm>

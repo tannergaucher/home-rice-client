@@ -11,7 +11,7 @@ export default function IngredientsForm({ children }) {
     >
       <input type="hidden" name="AssociateTag" value={AWS_ASSOCIATE_ID} />
       {children}
-      <input
+      <button
         style={{
           width: `100%`,
           margin: 0,
@@ -22,7 +22,9 @@ export default function IngredientsForm({ children }) {
         type="submit"
         name="add"
         value="Buy on Amazon"
-      />
+      >
+        Buy ingredients on Amazon
+      </button>
     </form>
   )
 }
