@@ -18,7 +18,7 @@ export default function RecipeTemplate({ data }) {
             className="responsive-iframe"
             id="player"
             type="text/html"
-            src={`http://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=http:/localhost:8000`}
+            src={`http://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=http://localhost:8000&modestbranding=1`}
             frameBorder="0"
           ></iframe>
         </div>
@@ -67,7 +67,6 @@ export const pageQuery = graphql`
           id
           text
           ASIN
-          quantity
         }
       }
     }
