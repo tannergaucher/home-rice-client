@@ -20,6 +20,7 @@ export default function RecipeTemplate({ data }) {
             type="text/html"
             src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&modestbranding=1`}
             frameBorder="0"
+            style={{ marginTop: `var(--space-lg)` }}
           ></iframe>
         </div>
         <br />
