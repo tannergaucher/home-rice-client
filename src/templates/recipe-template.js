@@ -53,6 +53,29 @@ export default function RecipeTemplate({ data }) {
               ))}
             </ul>
           </IngredientsForm>
+          <br />
+
+          <a
+            href={`https://www.youtube.com/watch?v=${data.sanityRecipe.youtubeVideoId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button
+              className="btn"
+              style={{ width: `100%`, fontFamily: `var(--serif)` }}
+            >
+              Watch on YouTube
+            </button>
+          </a>
+
+          {/* <a href="">
+            <button
+              className="btn"
+              style={{ width: `100%`, fontFamily: `var(--serif)` }}
+            >
+              Share Link
+            </button>
+          </a> */}
         </section>
       </article>
     </Layout>
