@@ -2,14 +2,18 @@ import React from "react"
 
 import { recipe } from "../utils/mocks"
 import { AWS_ASSOCIATE_ID } from "../utils/constants"
-import { Layout, SEO, IngredientsForm, Ingredient } from "../components"
+import { Layout, SEO, AmazonIngredientsForm, Ingredient } from "../components"
+
+const isShare = window.navigator.share !== undefined
+
+console.log(window.location)
 
 export default function RecipeTemplate({ data }) {
   return (
     <Layout>
       <SEO
         title={`${data.sanityRecipe.title} | ${recipe.category}`}
-        description={recipe.subHeading}
+        description={data.sanityRecipe.subtitle}
       />
       <article className="page padding container">
         <div className="responsive-container">
@@ -32,7 +36,7 @@ export default function RecipeTemplate({ data }) {
         <section className="container">
           <h2>Ingredients:</h2>
           <br />
-          <IngredientsForm>
+          <AmazonIngredientsForm>
             <ul style={{ listStyleType: `none`, paddingLeft: `0` }}>
               {data.sanityRecipe.ingredients.map(({ ingredient }, i) => (
                 <a
@@ -52,9 +56,8 @@ export default function RecipeTemplate({ data }) {
                 </a>
               ))}
             </ul>
-          </IngredientsForm>
+          </AmazonIngredientsForm>
           <br />
-
           <a
             href={`https://www.youtube.com/watch?v=${data.sanityRecipe.youtubeVideoId}`}
             target="_blank"
@@ -67,15 +70,26 @@ export default function RecipeTemplate({ data }) {
               Watch on YouTube
             </button>
           </a>
-
-          {/* <a href="">
-            <button
-              className="btn"
-              style={{ width: `100%`, fontFamily: `var(--serif)` }}
-            >
-              Share Link
-            </button>
-          </a> */}
+          {isShare && (
+            <a href="">
+              <button
+                className="btn"
+                style={{ width: `100%`, fontFamily: `var(--serif)` }}
+                onClick={e => {
+                  e.preventDefault()
+                  if (window.navigator.share) {
+                    window.navigator.share({
+                      title: data.sanityRecipe.title,
+                      text: data.sanityRecipe.title,
+                      url: window.location.origin,
+                    })
+                  }
+                }}
+              >
+                Share Link
+              </button>
+            </a>
+          )}
         </section>
       </article>
     </Layout>

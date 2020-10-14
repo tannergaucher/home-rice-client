@@ -1,7 +1,7 @@
-import IngredientsForm from "./ingredients-form"
+import AmazonIngredientsForm from "./amazon-ingredients-form"
 import Ingredient from "./ingredient"
 import Layout from "./layout"
 import SEO from "./seo"
 import Step from "./step"
 
-export { IngredientsForm, Ingredient, Layout, SEO, Step }
+export { AmazonIngredientsForm, Ingredient, Layout, SEO, Step }
