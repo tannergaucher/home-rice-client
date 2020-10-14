@@ -18,7 +18,7 @@ export default function IngredientsForm({ children }) {
           marginTop: `var(--space-lg)`,
           fontFamily: `var(--serif)`,
         }}
-        className="btn btn-primary"
+        className="btn"
         type="submit"
         name="add"
         value="Buy on Amazon"
