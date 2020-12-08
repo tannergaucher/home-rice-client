@@ -4,12 +4,7 @@ import { Link } from "gatsby"
 
 import { Layout } from "../components"
 
-// Query all recipes
-// Render recipes cards
-
 export default function IndexPage({ data }) {
-  console.log(data)
-
   return (
     <Layout>
       <article className="page padding">
@@ -22,7 +17,6 @@ export default function IndexPage({ data }) {
             >
               <div className="card">
                 <Img fluid={edge.node.mainImage.asset.fluid} />
-                <h2 className="card-heading">{edge.node.title}</h2>
               </div>
             </Link>
           ))}

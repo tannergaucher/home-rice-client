@@ -2,8 +2,6 @@
 
 :root {
   --serif: "Playfair Display", serif;
-  --accent-1: black;
-  --accent-2: palevioletred;
 }
 
 body {
@@ -35,4 +33,12 @@ body {
 
 li {
   margin-bottom: var(--space-md);
+}
+
+li:last-child {
+  margin-bottom: var(--space-md);
+}
+
+.content-grid {
+  align-items: initial;
 }

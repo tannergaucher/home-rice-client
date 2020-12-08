@@ -1,7 +1,7 @@
 import React from "react"
+import BlockContent from "@sanity/block-content-to-react"
 
 import { recipe } from "../utils/mocks"
-import { AWS_ASSOCIATE_ID } from "../utils/constants"
 import { Layout, SEO, IngredientsForm, Ingredient } from "../components"
 
 export default function RecipeTemplate({ data }) {
@@ -20,37 +20,31 @@ export default function RecipeTemplate({ data }) {
             type="text/html"
             src={`http://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=http:/localhost:8000`}
             frameBorder="0"
+            allowFullScreen={true}
           ></iframe>
         </div>
         <br />
         <h1>{data.sanityRecipe.title}</h1>
         <h2 className="text--md"> {data.sanityRecipe.subtitle}</h2>
-        <hr />
+        <br />
         <section>
-          <h2>Ingredients:</h2>
-          <br />
           <IngredientsForm>
-            <ul style={{ listStyleType: `none`, paddingLeft: `0` }}>
+            <ul>
               {data.sanityRecipe.ingredients.map(({ ingredient }, i) => (
-                <a
-                  key={ingredient.ASIN}
-                  href={`https://www.amazon.com/gp/product/${ingredient.ASIN}/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=${ingredient.ASIN}&linkCode=as2&tag=${AWS_ASSOCIATE_ID}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Ingredient
-                    text={ingredient.text}
-                    ASIN={ingredient.ASIN}
-                    // @HACK
-                    quantity={1}
-                    // quantity={ingredient.quantity}
-                    order={i + 1}
-                  />
-                </a>
+                <Ingredient
+                  key={ingredient.id}
+                  ingredient={ingredient}
+                  order={i + 1}
+                />
               ))}
             </ul>
           </IngredientsForm>
         </section>
+        <br />
+        <section>
+          <BlockContent blocks={data.sanityRecipe._rawBody} />
+        </section>
+        <br />
       </article>
     </Layout>
   )
@@ -61,13 +55,14 @@ export const pageQuery = graphql`
     sanityRecipe(slug: { current: { eq: $slug } }) {
       title
       subtitle
+      _rawBody
       youtubeVideoId
       ingredients {
         ingredient {
           id
           text
           ASIN
-          quantity
+          # quantity
         }
       }
     }

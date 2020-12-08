@@ -1,6 +1,3 @@
-// Query all recipes from sanity
-// Create template pages for each recipe
-
 const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -25,7 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create page for each post.
   recipes.forEach(edge => {
-    console.log(edge)
+    console.log("edge", edge)
 
     createPage({
       path: `/${edge.node.slug.current}`,
