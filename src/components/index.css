@@ -42,3 +42,14 @@ li:last-child {
 .content-grid {
   align-items: initial;
 }
+
+button {
+  font: ;
+}
+
+.btn {
+  font: initial;
+  font-family: var(--sans);
+  font-size: var(--space-md);
+  font-weight: bolder;
+}
