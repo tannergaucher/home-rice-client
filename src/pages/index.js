@@ -16,7 +16,10 @@ export default function IndexPage({ data }) {
               to={`/${edge.node.slug.current}`}
             >
               <div className="card">
-                <Img fluid={edge.node.mainImage.asset.fluid} />
+                <Img
+                  fluid={edge.node.mainImage.asset.fluid}
+                  style={{ borderRadius: `var(--radius)` }}
+                />
               </div>
             </Link>
           ))}
