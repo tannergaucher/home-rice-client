@@ -18,7 +18,7 @@ export default function IngredientsForm({ children }) {
           margin: 0,
           fontFamily: `var(--serif)`,
         }}
-        className="btn btn-primary"
+        className="btn  btn-primary"
         type="submit"
         name="add"
         value="Buy ingredients on Amazon"

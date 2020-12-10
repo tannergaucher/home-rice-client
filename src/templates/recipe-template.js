@@ -9,7 +9,7 @@ export default function RecipeTemplate({ data }) {
     <Layout>
       <SEO
         title={`${data.sanityRecipe.title} | ${recipe.category}`}
-        description={recipe.subHeading}
+        description={data.sanityRecipe.subtitle}
       />
       <article className="page padding container">
         <div className="responsive-container">
@@ -18,7 +18,7 @@ export default function RecipeTemplate({ data }) {
             className="responsive-iframe"
             id="player"
             type="text/html"
-            src={`http://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=http:/localhost:8000`}
+            src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app`}
             frameBorder="0"
             allowFullScreen={true}
           ></iframe>
@@ -39,6 +39,39 @@ export default function RecipeTemplate({ data }) {
               ))}
             </ul>
           </IngredientsForm>
+          <br />
+          {/* <a
+            href={`https://www.youtube.com/watch?v=${data.sanityRecipe.youtubeVideoId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button
+              className="btn"
+              style={{ width: `100%`, fontFamily: `var(--serif)` }}
+            >
+              Watch on YouTube
+            </button>
+          </a> */}
+          {/* {isShare && (
+            <a href="">
+              <button
+                className="btn"
+                style={{ width: `100%`, fontFamily: `var(--serif)` }}
+                onClick={e => {
+                  e.preventDefault()
+                  if (window.navigator.share) {
+                    window.navigator.share({
+                      title: data.sanityRecipe.title,
+                      text: data.sanityRecipe.title,
+                      url: window.location.origin,
+                    })
+                  }
+                }}
+              >
+                Share Link
+              </button>
+            </a>
+          )} */}
         </section>
         <br />
         <section>
