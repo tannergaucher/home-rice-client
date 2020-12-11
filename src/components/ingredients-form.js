@@ -21,7 +21,7 @@ export default function IngredientsForm({ children }) {
         className="btn  btn-primary"
         type="submit"
         name="add"
-        value="Buy ingredients on Amazon"
+        value="Buy selected ingredients on Amazon"
       />
       <br />
       <br />

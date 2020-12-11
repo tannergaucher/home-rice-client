@@ -1,12 +1,15 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&display=swap"); */
 
 :root {
+  --accent-1: palegoldenrod;
+  --accent-2: tomato;
+  --shadow-color: #fafafa;
   /* --serif: "Playfair Display", serif; */
 }
 
-body {
-  /* font-family: var(--serif); */
-}
+/* body {
+  font-family: var(--serif);
+} */
 
 .responsive-container {
   position: relative;
@@ -41,10 +44,7 @@ li:last-child {
 
 .content-grid {
   align-items: initial;
-}
-
-button {
-  font: ;
+  margin-top: 0;
 }
 
 .btn {

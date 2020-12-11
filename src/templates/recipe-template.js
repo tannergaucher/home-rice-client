@@ -18,7 +18,7 @@ export default function RecipeTemplate({ data }) {
             className="responsive-iframe"
             id="player"
             type="text/html"
-            src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app`}
+            src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=1&autoplay=1`}
             frameBorder="0"
             allowFullScreen={true}
           ></iframe>

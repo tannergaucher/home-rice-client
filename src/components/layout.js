@@ -9,7 +9,12 @@ const Layout = ({ children }) => {
     <div>
       <header className="header padding container">
         <Link to="/" style={{ textDecoration: `none` }}>
-          <h1 className="text--xxxl title">Home Rice</h1>
+          <h1
+            className="text--xxxl title"
+            style={{ fontStyle: `italic`, letterSpacing: `.5rem` }}
+          >
+            Home Rice
+          </h1>
         </Link>
       </header>
       <main className="main">{children}</main>
