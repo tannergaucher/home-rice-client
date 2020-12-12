@@ -1,13 +1,14 @@
 import React from "react"
 import BlockContent from "@sanity/block-content-to-react"
+import { Link } from "gatsby"
 
-import { Layout, SEO, IngredientsForm, Ingredient } from "../components"
+import { Layout, SEO, IngredientsForm, Ingredient, Brand } from "../components"
 
 export default function RecipeTemplate({ data }) {
   return (
     <Layout>
       <SEO
-        title={`${data.sanityVideo.title} | `}
+        title={`${data.sanityVideo.title}`}
         description={data.sanityVideo.subtitle}
       />
       <article className="page">
@@ -29,7 +30,7 @@ export default function RecipeTemplate({ data }) {
             <h1 className="title" style={{ marginBlockEnd: `var(--space-md)` }}>
               {data.sanityVideo.title}
             </h1>
-            <h2 className="text--md" style={{ marginBlockStart: 0 }}>
+            <h2 className="text--md subtitle" style={{ marginBlockStart: 0 }}>
               {" "}
               {data.sanityVideo.subtitle}
             </h2>
@@ -82,13 +83,21 @@ export default function RecipeTemplate({ data }) {
             </section>
 
             <br />
+            <hr />
 
             <section>
               <BlockContent blocks={data.sanityVideo._rawBody} />
             </section>
             <br />
+            <hr />
           </section>
         </div>
+
+        <section>
+          <Link to="/">
+            <Brand />
+          </Link>
+        </section>
       </article>
     </Layout>
   )

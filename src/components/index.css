@@ -37,10 +37,15 @@
 
 li {
   margin-bottom: var(--space-md);
+  font-size: 2vmax;
 }
 
 li:last-child {
   margin-bottom: var(--space-md);
+}
+
+p {
+  font-size: 2vmax;
 }
 
 .content-grid {
@@ -51,7 +56,7 @@ li:last-child {
 .btn {
   font: initial;
   font-family: var(--sans);
-  font-size: var(--space-md);
+  font-size: 2vmax;
   font-weight: bolder;
 }
 
@@ -63,4 +68,9 @@ li:last-child {
 .title {
   font-weight: 900;
   font-style: italic;
+  font-size: 5vmax;
+}
+
+.subtitle {
+  font-size: 3vmax;
 }

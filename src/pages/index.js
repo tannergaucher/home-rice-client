@@ -19,7 +19,7 @@ export default function IndexPage({ data }) {
               alignItems: `center`,
             }}
           >
-            <div>
+            <Link to="/">
               <picture
                 style={{
                   display: `flex`,
@@ -36,7 +36,7 @@ export default function IndexPage({ data }) {
                   style={{ width: `75%`, height: `75%` }}
                 />
               </picture>
-            </div>
+            </Link>
           </div>
         </section>
 

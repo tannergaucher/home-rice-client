@@ -22,7 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
   videos.forEach(edge => {
     createPage({
       path: `/${edge.node.slug.current}`,
-      component: path.resolve(`./src/templates/recipe-template.js`),
+      component: path.resolve(`./src/templates/video-template.js`),
       context: {
         slug: edge.node.slug.current,
       },
