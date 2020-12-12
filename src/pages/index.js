@@ -12,36 +12,9 @@ export default function IndexPage({ data }) {
     <Layout>
       <article className="page">
         <section>
-          <div
-            style={{
-              display: `flex`,
-              justifyContent: `center`,
-              alignItems: `center`,
-            }}
-          >
-            <Link to="/">
-              <picture
-                style={{
-                  display: `flex`,
-                  justifyContent: `center`,
-                  alignItems: `center`,
-                }}
-              >
-                <source
-                  srcSet={brandBannerDarkSrc}
-                  media="(prefers-color-scheme: dark)"
-                />
-                <img
-                  src={brandBannerLightSrc}
-                  style={{ width: `75%`, height: `75%` }}
-                />
-              </picture>
-            </Link>
-          </div>
+          <Brand />
         </section>
-
         <br />
-
         <div
           className="container content-grid"
           style={{ marginTop: `var(--space-lg)` }}
