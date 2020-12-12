@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `My Platform`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Home  Rice`,
+    description: `Cook good food at home`,
     author: `tannermichaelgaucher@gmail.com`,
   },
   plugins: [

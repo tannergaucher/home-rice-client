@@ -48,6 +48,8 @@ export default function IndexPage({ data }) {
           </div>
         </section>
 
+        <br />
+
         <div
           className="container content-grid"
           style={{ marginTop: `var(--space-lg)` }}
@@ -70,6 +72,7 @@ export default function IndexPage({ data }) {
               )
           )}
         </div>
+        <br />
       </article>
     </Layout>
   )

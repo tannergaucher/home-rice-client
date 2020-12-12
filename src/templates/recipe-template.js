@@ -24,24 +24,31 @@ export default function RecipeTemplate({ data }) {
           ></iframe>
         </div>
         <br />
-        <section className="container only-mobile-padding ">
-          <h1 className="title">{data.sanityRecipe.title}</h1>
-          <h2 className="text--md"> {data.sanityRecipe.subtitle}</h2>
-          <br />
-          <section>
-            <IngredientsForm>
-              <ul>
-                {data.sanityRecipe.ingredients.map(({ ingredient }, i) => (
-                  <Ingredient
-                    key={ingredient.id}
-                    ingredient={ingredient}
-                    order={i + 1}
-                  />
-                ))}
-              </ul>
-            </IngredientsForm>
+        <br />
+        <div className="container">
+          <section className="container  only-mobile-padding ">
+            <h1 className="title" style={{ marginBlockEnd: `var(--space-md)` }}>
+              {data.sanityRecipe.title}
+            </h1>
+            <h2 className="text--md" style={{ marginBlockStart: 0 }}>
+              {" "}
+              {data.sanityRecipe.subtitle}
+            </h2>
             <br />
-            {/* <a
+            <section>
+              <IngredientsForm>
+                <ul>
+                  {data.sanityRecipe.ingredients.map(({ ingredient }, i) => (
+                    <Ingredient
+                      key={ingredient.id}
+                      ingredient={ingredient}
+                      order={i + 1}
+                    />
+                  ))}
+                </ul>
+              </IngredientsForm>
+
+              {/* <a
             href={`https://www.youtube.com/watch?v=${data.sanityRecipe.youtubeVideoId}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -53,7 +60,7 @@ export default function RecipeTemplate({ data }) {
               Watch on YouTube
             </button>
           </a> */}
-            {/* {isShare && (
+              {/* {isShare && (
             <a href="">
               <button
                 className="btn"
@@ -73,13 +80,16 @@ export default function RecipeTemplate({ data }) {
               </button>
             </a>
           )} */}
+            </section>
+
+            <br />
+
+            <section>
+              <BlockContent blocks={data.sanityRecipe._rawBody} />
+            </section>
+            <br />
           </section>
-          <br />
-          <section>
-            <BlockContent blocks={data.sanityRecipe._rawBody} />
-          </section>
-          <br />
-        </section>
+        </div>
       </article>
     </Layout>
   )
