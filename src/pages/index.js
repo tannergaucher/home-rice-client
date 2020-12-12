@@ -2,13 +2,56 @@ import React from "react"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 
-import { Layout } from "../components"
+import brandBannerLightSrc from "../images/brand-banner-light.png"
+import brandBannerDarkSrc from "../images/brand-banner-dark.png"
+
+import { Brand, Layout } from "../components"
 
 export default function IndexPage({ data }) {
   return (
     <Layout>
-      <article className="page padding">
-        <div className="container content-grid">
+      <article className="page">
+        <section>
+          <div
+            style={{
+              display: `flex`,
+              justifyContent: `center`,
+              alignItems: `center`,
+            }}
+          >
+            <div>
+              <picture
+                style={{
+                  display: `flex`,
+                  justifyContent: `center`,
+                  alignItems: `center`,
+                }}
+              >
+                <source
+                  srcSet={brandBannerDarkSrc}
+                  media="(prefers-color-scheme: dark)"
+                />
+                <img
+                  src={brandBannerLightSrc}
+                  style={{ width: `75%`, height: `75%` }}
+                />
+              </picture>
+            </div>
+            {/* <img
+              style={{
+                width: `75%`,
+                height: `75%`,
+              }}
+              src={brandBannerDarkSrc}
+              alt=""
+            /> */}
+          </div>
+        </section>
+
+        <div
+          className="container content-grid"
+          style={{ marginTop: `var(--space-lg)` }}
+        >
           {data.allSanityRecipe.edges.map(
             edge =>
               console.log(edge) || (
@@ -22,7 +65,6 @@ export default function IndexPage({ data }) {
                       fluid={edge.node.mainImage.asset.fluid}
                       style={{ borderRadius: `var(--radius)` }}
                     />
-                    <h3 className="card-heading">{edge.node.title}</h3>
                   </div>
                 </Link>
               )

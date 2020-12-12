@@ -1,22 +1,22 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&display=swap"); */
-
 :root {
-  --accent-1: palegoldenrod;
-  --accent-2: tomato;
-  --shadow-color: #fafafa;
-  /* --serif: "Playfair Display", serif; */
+  --radius: 0;
+  --accent-2: peachpuff;
+  --accent-1: tomato;
+  /* --shadow-color: #fafafa; */
+  --brand-text-shadow: var(--accent-2) 0.1rem 0.25rem;
+  @media (prefers-color-scheme: dark) {
+    --accent-1: palegoldenrod;
+    --accent-2: tomato;
+  }
 }
 
-/* body {
-  font-family: var(--serif);
-} */
-
+/* YT embed container */
 .responsive-container {
   position: relative;
   overflow: hidden;
   padding-top: 56.25%;
 }
-
+/* YT  */
 .responsive-iframe {
   position: absolute;
   top: 0;
@@ -52,4 +52,14 @@ li:last-child {
   font-family: var(--sans);
   font-size: var(--space-md);
   font-weight: bolder;
+}
+
+.text--xxxl {
+  font-size: var(--text-xxxl);
+  margin: var(--space-lg) 0;
+}
+
+.title {
+  letter-spacing: 0.3rem;
+  font-weight: 900;
 }

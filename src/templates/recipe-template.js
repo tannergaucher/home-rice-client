@@ -11,36 +11,37 @@ export default function RecipeTemplate({ data }) {
         title={`${data.sanityRecipe.title} | ${recipe.category}`}
         description={data.sanityRecipe.subtitle}
       />
-      <article className="page padding container">
+      <article className="page">
         <div className="responsive-container">
           <iframe
             title={data.sanityRecipe.title}
             className="responsive-iframe"
             id="player"
             type="text/html"
-            src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=1&autoplay=1`}
+            src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=1&autoplay=1&rel=0`}
             frameBorder="0"
             allowFullScreen={true}
           ></iframe>
         </div>
         <br />
-        <h1>{data.sanityRecipe.title}</h1>
-        <h2 className="text--md"> {data.sanityRecipe.subtitle}</h2>
-        <br />
-        <section>
-          <IngredientsForm>
-            <ul>
-              {data.sanityRecipe.ingredients.map(({ ingredient }, i) => (
-                <Ingredient
-                  key={ingredient.id}
-                  ingredient={ingredient}
-                  order={i + 1}
-                />
-              ))}
-            </ul>
-          </IngredientsForm>
+        <section className="container only-mobile-padding ">
+          <h1 className="title">{data.sanityRecipe.title}</h1>
+          <h2 className="text--md"> {data.sanityRecipe.subtitle}</h2>
           <br />
-          {/* <a
+          <section>
+            <IngredientsForm>
+              <ul>
+                {data.sanityRecipe.ingredients.map(({ ingredient }, i) => (
+                  <Ingredient
+                    key={ingredient.id}
+                    ingredient={ingredient}
+                    order={i + 1}
+                  />
+                ))}
+              </ul>
+            </IngredientsForm>
+            <br />
+            {/* <a
             href={`https://www.youtube.com/watch?v=${data.sanityRecipe.youtubeVideoId}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -52,7 +53,7 @@ export default function RecipeTemplate({ data }) {
               Watch on YouTube
             </button>
           </a> */}
-          {/* {isShare && (
+            {/* {isShare && (
             <a href="">
               <button
                 className="btn"
@@ -72,12 +73,13 @@ export default function RecipeTemplate({ data }) {
               </button>
             </a>
           )} */}
+          </section>
+          <br />
+          <section>
+            <BlockContent blocks={data.sanityRecipe._rawBody} />
+          </section>
+          <br />
         </section>
-        <br />
-        <section>
-          <BlockContent blocks={data.sanityRecipe._rawBody} />
-        </section>
-        <br />
       </article>
     </Layout>
   )
