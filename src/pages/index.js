@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import brandBannerLightSrc from "../images/brand-banner-light.png"
 import brandBannerDarkSrc from "../images/brand-banner-dark.png"
 
-import { Brand, Layout } from "../components"
+import { Brand, Layout, SEO } from "../components"
 
 export default function IndexPage({ data }) {
   return (
@@ -37,14 +37,6 @@ export default function IndexPage({ data }) {
                 />
               </picture>
             </div>
-            {/* <img
-              style={{
-                width: `75%`,
-                height: `75%`,
-              }}
-              src={brandBannerDarkSrc}
-              alt=""
-            /> */}
           </div>
         </section>
 
@@ -54,7 +46,7 @@ export default function IndexPage({ data }) {
           className="container content-grid"
           style={{ marginTop: `var(--space-lg)` }}
         >
-          {data.allSanityRecipe.edges.map(
+          {data.allSanityVideo.edges.map(
             edge =>
               console.log(edge) || (
                 <Link
@@ -80,7 +72,7 @@ export default function IndexPage({ data }) {
 
 export const pageQuery = graphql`
   query {
-    allSanityRecipe {
+    allSanityVideo {
       edges {
         node {
           id

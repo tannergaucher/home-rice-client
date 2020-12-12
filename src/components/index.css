@@ -3,7 +3,6 @@
   --accent-2: peachpuff;
   --accent-1: tomato;
   --responsive-unit: 0.5vmax;
-  /* --shadow-color: #fafafa; */
   --brand-text-shadow: var(--accent-2) 0.1rem 0.25rem;
 
   @media (prefers-color-scheme: dark) {
@@ -63,4 +62,5 @@ li:last-child {
 
 .title {
   font-weight: 900;
+  font-style: italic;
 }

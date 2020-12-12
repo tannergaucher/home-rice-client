@@ -3,10 +3,9 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // Query all recipes
-  const allRecipe = await graphql(`
+  const allVideo = await graphql(`
     query {
-      allSanityRecipe {
+      allSanityVideo {
         edges {
           node {
             slug {
@@ -18,10 +17,9 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const recipes = allRecipe.data.allSanityRecipe.edges
+  const videos = allVideo.data.allSanityVideo.edges
 
-  // Create page for each post.
-  recipes.forEach(edge => {
+  videos.forEach(edge => {
     createPage({
       path: `/${edge.node.slug.current}`,
       component: path.resolve(`./src/templates/recipe-template.js`),

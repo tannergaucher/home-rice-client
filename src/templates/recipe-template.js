@@ -1,24 +1,23 @@
 import React from "react"
 import BlockContent from "@sanity/block-content-to-react"
 
-import { recipe } from "../utils/mocks"
 import { Layout, SEO, IngredientsForm, Ingredient } from "../components"
 
 export default function RecipeTemplate({ data }) {
   return (
     <Layout>
       <SEO
-        title={`${data.sanityRecipe.title} | ${recipe.category}`}
-        description={data.sanityRecipe.subtitle}
+        title={`${data.sanityVideo.title} | `}
+        description={data.sanityVideo.subtitle}
       />
       <article className="page">
         <div className="responsive-container">
           <iframe
-            title={data.sanityRecipe.title}
+            title={data.sanityVideo.title}
             className="responsive-iframe"
             id="player"
             type="text/html"
-            src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=1&autoplay=1&rel=0`}
+            src={`https://www.youtube.com/embed/${data.sanityVideo.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=1&autoplay=1&rel=0`}
             frameBorder="0"
             allowFullScreen={true}
           ></iframe>
@@ -28,17 +27,17 @@ export default function RecipeTemplate({ data }) {
         <div className="container">
           <section className="container  only-mobile-padding ">
             <h1 className="title" style={{ marginBlockEnd: `var(--space-md)` }}>
-              {data.sanityRecipe.title}
+              {data.sanityVideo.title}
             </h1>
             <h2 className="text--md" style={{ marginBlockStart: 0 }}>
               {" "}
-              {data.sanityRecipe.subtitle}
+              {data.sanityVideo.subtitle}
             </h2>
-            <br />
+            <hr />
             <section>
               <IngredientsForm>
                 <ul>
-                  {data.sanityRecipe.ingredients.map(({ ingredient }, i) => (
+                  {data.sanityVideo.ingredients.map((ingredient, i) => (
                     <Ingredient
                       key={ingredient.id}
                       ingredient={ingredient}
@@ -49,7 +48,7 @@ export default function RecipeTemplate({ data }) {
               </IngredientsForm>
 
               {/* <a
-            href={`https://www.youtube.com/watch?v=${data.sanityRecipe.youtubeVideoId}`}
+            href={`https://www.youtube.com/watch?v=${data.sanityVideo.youtubeVideoId}`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -69,8 +68,8 @@ export default function RecipeTemplate({ data }) {
                   e.preventDefault()
                   if (window.navigator.share) {
                     window.navigator.share({
-                      title: data.sanityRecipe.title,
-                      text: data.sanityRecipe.title,
+                      title: data.sanityVideo.title,
+                      text: data.sanityVideo.title,
                       url: window.location.origin,
                     })
                   }
@@ -85,7 +84,7 @@ export default function RecipeTemplate({ data }) {
             <br />
 
             <section>
-              <BlockContent blocks={data.sanityRecipe._rawBody} />
+              <BlockContent blocks={data.sanityVideo._rawBody} />
             </section>
             <br />
           </section>
@@ -96,19 +95,16 @@ export default function RecipeTemplate({ data }) {
 }
 
 export const pageQuery = graphql`
-  query RECIPE_QUERY($slug: String!) {
-    sanityRecipe(slug: { current: { eq: $slug } }) {
+  query VIDEO_QUERY($slug: String!) {
+    sanityVideo(slug: { current: { eq: $slug } }) {
       title
       subtitle
       _rawBody
       youtubeVideoId
       ingredients {
-        ingredient {
-          id
-          text
-          ASIN
-          # quantity
-        }
+        id
+        text
+        ASIN
       }
     }
   }
