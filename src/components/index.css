@@ -48,6 +48,10 @@ p {
   font-size: 2vmax;
 }
 
+hr {
+  border-width: medium;
+}
+
 .content-grid {
   align-items: initial;
   margin-top: 0;
