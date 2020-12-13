@@ -8,8 +8,6 @@ export default function Brand() {
         justifyContent: `center`,
         alignItems: `center`,
         minHeight: `100vh`,
-        // minWidth: `calc(100vw - calc(var(--space-md) * 2))`,
-        padding: `var(--space-sm)`,
       }}
     >
       <h1

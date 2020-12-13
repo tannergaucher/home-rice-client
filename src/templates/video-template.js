@@ -23,8 +23,6 @@ export default function RecipeTemplate({ data }) {
             allowFullScreen={true}
           ></iframe>
         </div>
-        <br />
-        <br />
         <div className="container">
           <section className="container  only-mobile-padding ">
             <h1 className="title" style={{ marginBlockEnd: `var(--space-md)` }}>
@@ -35,20 +33,19 @@ export default function RecipeTemplate({ data }) {
               {data.sanityVideo.subtitle}
             </h2>
             <hr />
-            <section>
-              <IngredientsForm>
-                <ul>
-                  {data.sanityVideo.ingredients.map((ingredient, i) => (
-                    <Ingredient
-                      key={ingredient.id}
-                      ingredient={ingredient}
-                      order={i + 1}
-                    />
-                  ))}
-                </ul>
-              </IngredientsForm>
+            <IngredientsForm>
+              <ul>
+                {data.sanityVideo.ingredients.map((ingredient, i) => (
+                  <Ingredient
+                    key={ingredient.id}
+                    ingredient={ingredient}
+                    order={i + 1}
+                  />
+                ))}
+              </ul>
+            </IngredientsForm>
 
-              {/* <a
+            {/* <a
             href={`https://www.youtube.com/watch?v=${data.sanityVideo.youtubeVideoId}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -60,7 +57,7 @@ export default function RecipeTemplate({ data }) {
               Watch on YouTube
             </button>
           </a> */}
-              {/* {isShare && (
+            {/* {isShare && (
             <a href="">
               <button
                 className="btn"
@@ -80,21 +77,13 @@ export default function RecipeTemplate({ data }) {
               </button>
             </a>
           )} */}
-            </section>
-
-            <br />
             <hr />
-
             <section>
               <BlockContent blocks={data.sanityVideo._rawBody} />
             </section>
-            <br />
             <hr />
           </section>
         </div>
-
-
-
 
         <section>
           <Link to="/">
