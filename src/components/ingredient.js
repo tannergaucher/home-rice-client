@@ -1,5 +1,6 @@
 import React from "react"
-import { AWS_ASSOCIATE_ID } from "../utils/constants"
+
+import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 
 export default function Ingredient({ ingredient, order }) {
   return (
@@ -7,7 +8,7 @@ export default function Ingredient({ ingredient, order }) {
       {ingredient.ASIN ? (
         <li style={{ marginBottom: `var(--space-md)` }}>
           <a
-            href={`https://www.amazon.com/gp/product/${ingredient.ASIN}/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=${ingredient.ASIN}&linkCode=as2&tag=${AWS_ASSOCIATE_ID}`}
+            href={getAmazonAffiliateLink(ingredient.ASIN)}
             target="_blank"
             rel="noopener noreferrer"
             s

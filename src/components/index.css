@@ -1,13 +1,14 @@
 :root {
   --radius: 0;
   --accent-2: peachpuff;
-  --accent-1: tomato;
+  --accent-1: palevioletred;
+  --brand: tomato;
   --responsive-unit: 0.5vmax;
   --brand-text-shadow: var(--accent-2) 0.1rem 0.25rem;
 
   @media (prefers-color-scheme: dark) {
-    --accent-1: palegoldenrod;
-    --accent-2: tomato;
+    /* --accent-1: palegoldenrod;
+    --accent-2: palevioletred; */
   }
 }
 

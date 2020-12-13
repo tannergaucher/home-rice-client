@@ -8,7 +8,8 @@ export default function Brand() {
         justifyContent: `center`,
         alignItems: `center`,
         minHeight: `100vh`,
-        minWidth: `100vw`,
+        // minWidth: `calc(100vw - calc(var(--space-md) * 2))`,
+        padding: `var(--space-sm)`,
       }}
     >
       <h1
@@ -18,9 +19,11 @@ export default function Brand() {
           marginBlockStart: `0`,
           marginBlockEnd: `0`,
           color: `var(--accent-1)`,
-          textShadow: `red 2vw 5vw`,
+          textShadow: `var(--brand) 2vw 5vw`,
           padding: `var(--space-sm)`,
           fontStyle: `italic`,
+
+          padding: `var(--space-xl)`,
         }}
       >
         Home
