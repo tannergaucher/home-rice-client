@@ -63,7 +63,7 @@ hr {
 .btn {
   font: initial;
   font-family: var(--sans);
-  font-size: 3vmax;
+  font-size: 2vmax;
   font-weight: bolder;
   width: calc(100% - var(--space-md));
   padding: var(--space-sm);

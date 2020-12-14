@@ -74,7 +74,7 @@ export default function RecipeTemplate({ data }) {
                 }}
               >
                 Share Link
-              </button>
+              </button>\
             </a>
           )} */}
             <hr />
@@ -84,7 +84,6 @@ export default function RecipeTemplate({ data }) {
             <hr />
           </section>
         </div>
-
         <section>
           <Link to="/">
             <Brand />
