@@ -7,7 +7,7 @@ export default function Brand() {
         display: `flex`,
         justifyContent: `center`,
         alignItems: `center`,
-        minHeight: `100vh`,
+        minHeight: `95vh`,
       }}
     >
       <h1
@@ -20,8 +20,8 @@ export default function Brand() {
           textShadow: `var(--brand) 2vw 5vw`,
           padding: `var(--space-sm)`,
           fontStyle: `italic`,
-
           padding: `var(--space-xl)`,
+          lineHeight: `initial`,
         }}
       >
         Home

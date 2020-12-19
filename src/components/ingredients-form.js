@@ -14,7 +14,7 @@ export default function IngredientsForm({ children }) {
           width: `100%`,
           margin: 0,
           fontFamily: `var(--serif)`,
-          marginBlockStart: `0`,
+          marginBlockStart: `var(--space-sm)`,
           marginBlockEnd: `var(--space-lg)`,
         }}
         className="btn btn-primary"
@@ -22,7 +22,6 @@ export default function IngredientsForm({ children }) {
         name="add"
         value="Ingredients on Amazon"
       />
-      <br />
       <input type="hidden" name="AssociateTag" value={AWS_ASSOCIATE_ID} />
       {children}
       <br />

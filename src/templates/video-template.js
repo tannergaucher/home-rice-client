@@ -23,15 +23,22 @@ export default function RecipeTemplate({ data }) {
             allowFullScreen={true}
           ></iframe>
         </div>
+        <br />
         <div className="container">
           <section className="container padding">
-            <h1 className="title" style={{ marginBlockEnd: `var(--space-md)` }}>
+            <h1
+              className="title"
+              style={{
+                marginBlockEnd: `var(--space-md)`,
+                marginBlockStart: `var(--space-md)`,
+              }}
+            >
               {data.sanityVideo.title}
             </h1>
             <h2 className="text--md subtitle" style={{ marginBlockStart: 0 }}>
               {data.sanityVideo.subtitle}
             </h2>
-            <hr />
+            <br />
             <IngredientsForm>
               <ul>
                 {data.sanityVideo.ingredients.map((ingredient, i) => (

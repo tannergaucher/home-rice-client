@@ -1,13 +1,14 @@
 :root {
   --radius: 0;
+  --padding: var(--space-md);
   --accent-2: peachpuff;
   --accent-1: palevioletred;
   --brand: tomato;
   --responsive-unit: 0.5vmax;
   --brand-text-shadow: var(--accent-2) 0.1rem 0.25rem;
   --responsive-unit: 0.6vmax;
-  --text-baseline: calc(1rem + var(--responsive-unit));
-  --space-baseline: calc(1rem + var(--responsive-unit));
+  /* --text-baseline: calc(1rem + var(--responsive-unit));
+  --space-baseline: calc(1rem + var(--responsive-unit)); */
 
   @media (prefers-color-scheme: dark) {
     /* --accent-1: palegoldenrod;
@@ -56,6 +57,8 @@ hr {
   border-width: medium;
   margin-inline-end: 0;
   margin-inline-start: 0;
+  margin-block-start: var(--space-xl);
+  margin-block-end: var(--space-xl);
 }
 
 .content-grid {
@@ -89,4 +92,31 @@ hr {
 
 .subtitle {
   font-size: 3vmax;
+}
+
+.responsive-title {
+  font-size: 20vmin;
+}
+
+@media (max-width: 1200px) {
+  .responsive-title {
+    font-size: 15vmin;
+  }
+}
+
+@media (max-width: 1000px) {
+  .responsive-title {
+    font-size: 12vmin;
+  }
+}
+
+@media (max-width: 700px) {
+  .responsive-title {
+    font-size: 8vmin;
+  }
+
+  hr {
+    margin-block-start: var(--space-lg);
+    margin-block-end: var(--space-lg);
+  }
 }
