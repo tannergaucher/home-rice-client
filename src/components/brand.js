@@ -7,7 +7,7 @@ export default function Brand() {
         display: `flex`,
         justifyContent: `center`,
         alignItems: `center`,
-        minHeight: `95vh`,
+        minHeight: `85vmin`,
       }}
     >
       <h1
