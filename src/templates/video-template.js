@@ -24,12 +24,11 @@ export default function RecipeTemplate({ data }) {
           ></iframe>
         </div>
         <div className="container">
-          <section className="container  only-mobile-padding ">
+          <section className="container padding">
             <h1 className="title" style={{ marginBlockEnd: `var(--space-md)` }}>
               {data.sanityVideo.title}
             </h1>
             <h2 className="text--md subtitle" style={{ marginBlockStart: 0 }}>
-              {" "}
               {data.sanityVideo.subtitle}
             </h2>
             <hr />
@@ -44,7 +43,6 @@ export default function RecipeTemplate({ data }) {
                 ))}
               </ul>
             </IngredientsForm>
-
             {/* <a
             href={`https://www.youtube.com/watch?v=${data.sanityVideo.youtubeVideoId}`}
             target="_blank"

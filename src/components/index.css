@@ -5,6 +5,9 @@
   --brand: tomato;
   --responsive-unit: 0.5vmax;
   --brand-text-shadow: var(--accent-2) 0.1rem 0.25rem;
+  --responsive-unit: 0.6vmax;
+  --text-baseline: calc(1rem + var(--responsive-unit));
+  --space-baseline: calc(1rem + var(--responsive-unit));
 
   @media (prefers-color-scheme: dark) {
     /* --accent-1: palegoldenrod;
@@ -38,7 +41,7 @@
 
 li {
   margin-bottom: var(--space-md);
-  font-size: 2vmax;
+  font-size: 3vmax;
 }
 
 li:last-child {
@@ -46,7 +49,7 @@ li:last-child {
 }
 
 p {
-  font-size: 2vmax;
+  font-size: 3vmax;
 }
 
 hr {
@@ -63,10 +66,14 @@ hr {
 .btn {
   font: initial;
   font-family: var(--sans);
-  font-size: 2vmax;
+  font-size: 3vmax;
   font-weight: bolder;
   width: calc(100% - var(--space-md));
   padding: var(--space-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
 }
 
 .text--xxxl {
