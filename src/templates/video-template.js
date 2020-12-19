@@ -23,14 +23,14 @@ export default function RecipeTemplate({ data }) {
             allowFullScreen={true}
           ></iframe>
         </div>
-        <br />
+
         <div className="container">
-          <section className="container padding">
+          <section className="padding">
             <h1
               className="title"
               style={{
                 marginBlockEnd: `var(--space-md)`,
-                marginBlockStart: `var(--space-md)`,
+                marginBlockStart: `var(--space-lg)`,
               }}
             >
               {data.sanityVideo.title}
