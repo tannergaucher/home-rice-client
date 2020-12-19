@@ -38,7 +38,7 @@ export default function IndexPage({ data }) {
                   fluid={edge.node.mainImage.asset.fluid}
                   style={{
                     borderRadius: `var(--radius)`,
-                    filter: `brightness(0.5)`,
+                    filter: `brightness(0.8)`,
                   }}
                 />
               </div>
