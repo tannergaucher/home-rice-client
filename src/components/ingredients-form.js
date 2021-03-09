@@ -9,22 +9,20 @@ export default function IngredientsForm({ children }) {
       action="https://www.amazon.com/gp/aws/cart/add.html"
       style={{ position: `relative` }}
     >
-      <input
+      <button
         style={{
           width: `100%`,
-          margin: 0,
-          fontFamily: `var(--serif)`,
-          marginBlockStart: `var(--space-sm)`,
-          marginBlockEnd: `var(--space-lg)`,
+          marginBottom: `0`,
         }}
         className="btn btn-primary"
         type="submit"
         name="add"
-        value="Ingredients on Amazon"
-      />
+      >
+        Ingredients on Amazon
+      </button>
       <input type="hidden" name="AssociateTag" value={AWS_ASSOCIATE_ID} />
+      <hr className="hr" />
       {children}
-      <br />
     </form>
   )
 }

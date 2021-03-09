@@ -18,7 +18,6 @@ export default function Ingredient({ ingredient, order }) {
               name={`ASIN.${order}`}
               value={ingredient.ASIN}
             />
-            {/* TODO dynamic quantity */}
             <input type="hidden" name={`Quantity.${order}`} value={1} />
             <li style={{ textDecoration: `none` }}>{ingredient.text}</li>
           </a>
