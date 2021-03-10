@@ -1,15 +1,40 @@
 :root {
-  --accent-2: tomato;
-  --accent-1: #cc4f38;
+  --accent-1: tomato;
+  --accent-2: #cc4f38;
+  --bg-1: rgb(0, 0, 0);
+  --bg-2: #1a1a1b;
+  --grey: #fafafa9f;
+  --text-color: white;
+  --href-color: var(--accent-1);
+  --shadow-color: rgb(37 21 17 / 88%);
+  --href-hover-color: var(--accent-2);
+  --btn-color: var(--href-color);
+  --btn-hover-color: var(--href-hover-color);
+  --primary-btn-bg: var(--accent-1);
+  --primary-btn-color: var(--bg-1);
+  --primary-btn-hover-color: var(--bg-1);
+  --code-bg: var(--bg-2);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --accent-1: tomato;
     --accent-2: #cc4f38;
+    --bg-1: rgb(0, 0, 0);
+    --bg-2: #1a1a1b;
+    --grey: #fafafa9f;
+    --text-color: white;
+    --href-color: var(--accent-1);
     --shadow-color: rgb(37 21 17 / 88%);
+    --href-hover-color: var(--accent-2);
+    --btn-color: var(--href-color);
+    --btn-hover-color: var(--href-hover-color);
+    --primary-btn-bg: var(--accent-1);
+    --primary-btn-color: var(--bg-1);
+    --primary-btn-hover-color: var(--bg-1);
+    --code-bg: var(--bg-2);
   }
-}
+} */
 
 /* YT embed container */
 .responsive-container {
