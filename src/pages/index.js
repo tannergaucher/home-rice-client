@@ -2,11 +2,12 @@ import React from "react"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 
-import { Layout } from "../components"
+import { Layout, SEO } from "../components"
 
 export default function IndexPage({ data }) {
   return (
     <Layout>
+      <SEO title="Home" description="Yum yum yum" />
       <article>
         <div className="page padding container content-grid">
           {data.allSanityVideo.edges.map(edge => (
