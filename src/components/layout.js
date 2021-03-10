@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 import "semantic-styles"
+
 import "./index.css"
 
 const Layout = ({ children }) => {
