@@ -8,11 +8,7 @@ export default function IngredientsForm({ ingredients, children }) {
   )
 
   return (
-    <form
-      method="GET"
-      action="https://www.amazon.com/gp/aws/cart/add.html"
-      style={{ position: `relative` }}
-    >
+    <form method="GET" action="https://www.amazon.com/gp/aws/cart/add.html">
       {amazonIngredients.length > 0 && (
         <>
           <button
