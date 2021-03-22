@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Home  Rice`,
-    description: `Cook good food at home`,
+    title: `Home Rice`,
+    description: `Yum yum yum`,
     author: `tannermichaelgaucher@gmail.com`,
   },
   plugins: [

@@ -3,11 +3,14 @@ import Img from "gatsby-image"
 import { Link, graphql } from "gatsby"
 
 import { Layout, SEO } from "../components"
+import useSiteMetadata from "../hooks/use-site-metadata"
 
 export default function IndexPage({ data }) {
+  const { description } = useSiteMetadata()
+
   return (
     <Layout>
-      <SEO title="Home" description="Yum yum yum" />
+      <SEO title="Home" description={description} />
       <article>
         <div className="page padding container content-grid">
           {data.allSanityRecipe.edges.map(edge => (
@@ -18,14 +21,7 @@ export default function IndexPage({ data }) {
             >
               <div className="card">
                 {edge.node.mainImage && edge.node.mainImage.asset && (
-                  <Img
-                    className="index-img"
-                    fluid={edge.node.mainImage.asset.fluid}
-                    style={{
-                      filter: `brightness(0.8)`,
-                      height: `250px`,
-                    }}
-                  />
+                  <Img fluid={edge.node.mainImage.asset.fluid} />
                 )}
                 <h3 className="card-heading">{edge.node.title}</h3>
               </div>
