@@ -1,3 +1,5 @@
+@import url("../node_modules/semantic-styles/package/modes/dark.css");
+
 :root {
   --accent-1: tomato;
   --accent-2: #cc4f38;
