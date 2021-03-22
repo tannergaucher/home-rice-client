@@ -5,11 +5,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allVideo = await graphql(`
     query {
-      allSanityVideo {
+      allSanityRecipe {
         edges {
           node {
             title
             subtitle
+            draft
             ingredients {
               ASIN
               text
@@ -23,15 +24,29 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const videos = allVideo.data.allSanityVideo.edges
+  const videos = allVideo.data.allSanityRecipe.edges
 
   videos.forEach(edge => {
-    createPage({
-      path: `/${edge.node.slug.current}`,
-      component: path.resolve(`./src/templates/video-template.js`),
-      context: {
-        slug: edge.node.slug.current,
-      },
-    })
+    if (process.env.NODE_ENV === "development") {
+      createPage({
+        path: `/${edge.node.slug.current}`,
+        component: path.resolve(`./src/templates/video-template.js`),
+        context: {
+          slug: edge.node.slug.current,
+        },
+      })
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      if (edge.node.draft === false) {
+        createPage({
+          path: `/${edge.node.slug.current}`,
+          component: path.resolve(`./src/templates/video-template.js`),
+          context: {
+            slug: edge.node.slug.current,
+          },
+        })
+      }
+    }
   })
 }
