@@ -2,16 +2,15 @@ import React from "react"
 
 import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 
-export default function Ingredient({ ingredient, order }) {
+export default function IngredientsFormItem({ ingredient, order }) {
   return (
-    <>
+    <ul>
       {ingredient.ASIN ? (
         <li style={{ marginBottom: `var(--space-md)` }}>
           <a
             href={getAmazonAffiliateLink(ingredient.ASIN)}
             target="_blank"
             rel="noopener noreferrer"
-            s
           >
             <input
               type="hidden"
@@ -25,6 +24,6 @@ export default function Ingredient({ ingredient, order }) {
       ) : (
         <li style={{ textDecoration: `none` }}>{ingredient.text}</li>
       )}
-    </>
+    </ul>
   )
 }

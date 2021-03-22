@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 import "semantic-styles"
 
-import "./index.css"
+import "../index.css"
 
 const Layout = ({ children }) => {
   return (

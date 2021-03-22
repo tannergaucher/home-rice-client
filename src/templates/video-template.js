@@ -1,9 +1,15 @@
 import React from "react"
+import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 
-import { Layout, SEO, IngredientsForm, Ingredient } from "../components"
+import {
+  Layout,
+  SEO,
+  IngredientsForm,
+  IngredientsFormItem,
+} from "../components"
 
-export default function RecipeTemplate({ data }) {
+export default function VideoPageTemplate({ data }) {
   return (
     <Layout>
       <SEO
@@ -40,15 +46,13 @@ export default function RecipeTemplate({ data }) {
             </h2>
             <br />
             <IngredientsForm>
-              <ul>
-                {data.sanityVideo.ingredients.map((ingredient, i) => (
-                  <Ingredient
-                    key={ingredient.id}
-                    ingredient={ingredient}
-                    order={i + 1}
-                  />
-                ))}
-              </ul>
+              {data.sanityVideo.ingredients.map((ingredient, i) => (
+                <IngredientsFormItem
+                  key={ingredient.id}
+                  ingredient={ingredient}
+                  order={i + 1}
+                />
+              ))}
             </IngredientsForm>
             <hr className="hr" />
             <BlockContent blocks={data.sanityVideo._rawBody} />
@@ -61,7 +65,7 @@ export default function RecipeTemplate({ data }) {
 }
 
 export const pageQuery = graphql`
-  query VIDEO_QUERY($slug: String!) {
+  query VIDEO_PAGE_QUERY($slug: String!) {
     sanityVideo(slug: { current: { eq: $slug } }) {
       title
       subtitle

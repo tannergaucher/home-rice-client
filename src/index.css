@@ -1,8 +1,4 @@
-/* import dark theme */
-@import url("../../node_modules/semantic-styles/package/themes/dark.css");
-
 :root {
-  /* brand overrides */
   --accent-1: tomato;
   --accent-2: #cc4f38;
   --shadow-color: rgb(37 21 17 / 88%);
@@ -15,6 +11,7 @@
   padding-top: 56.25%;
   height: 100%;
 }
+
 /* YT  */
 .responsive-iframe {
   position: absolute;
