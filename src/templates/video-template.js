@@ -13,8 +13,8 @@ export default function VideoPageTemplate({ data }) {
   return (
     <Layout>
       <SEO
-        title={`${data.sanityVideo.title}`}
-        description={data.sanityVideo.subtitle}
+        title={`${data.sanityRecipe.title}`}
+        description={data.sanityRecipe.subtitle}
       />
       <div className="padding">
         <article
@@ -23,11 +23,11 @@ export default function VideoPageTemplate({ data }) {
         >
           <div className="responsive-container">
             <iframe
-              title={data.sanityVideo.title}
+              title={data.sanityRecipe.title}
               className="responsive-iframe"
               id="player"
               type="text/html"
-              src={`https://www.youtube.com/embed/${data.sanityVideo.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=0&autoplay=1&rel=0`}
+              src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=0&autoplay=1&rel=0`}
               frameBorder="0"
               allowFullScreen={true}
               style={{
@@ -39,14 +39,14 @@ export default function VideoPageTemplate({ data }) {
           <br />
           <div className="container padding">
             <h1 style={{ marginBlockStart: `var(--space-md)` }}>
-              {data.sanityVideo.title}
+              {data.sanityRecipe.title}
             </h1>
             <h2 style={{ color: `var(--grey)` }}>
-              {data.sanityVideo.subtitle}
+              {data.sanityRecipe.subtitle}
             </h2>
             <br />
-            <IngredientsForm>
-              {data.sanityVideo.ingredients.map((ingredient, i) => (
+            <IngredientsForm ingredients={data.sanityRecipe.ingredients}>
+              {data.sanityRecipe.ingredients.map((ingredient, i) => (
                 <IngredientsFormItem
                   key={ingredient.id}
                   ingredient={ingredient}
@@ -55,7 +55,7 @@ export default function VideoPageTemplate({ data }) {
               ))}
             </IngredientsForm>
             <hr className="hr" />
-            <BlockContent blocks={data.sanityVideo._rawBody} />
+            <BlockContent blocks={data.sanityRecipe._rawBody} />
             <hr className="hr" />
           </div>
         </article>
@@ -66,7 +66,7 @@ export default function VideoPageTemplate({ data }) {
 
 export const pageQuery = graphql`
   query VIDEO_PAGE_QUERY($slug: String!) {
-    sanityVideo(slug: { current: { eq: $slug } }) {
+    sanityRecipe(slug: { current: { eq: $slug } }) {
       title
       subtitle
       _rawBody

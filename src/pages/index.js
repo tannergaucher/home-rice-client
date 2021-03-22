@@ -1,6 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import { Layout, SEO } from "../components"
 
@@ -10,7 +10,7 @@ export default function IndexPage({ data }) {
       <SEO title="Home" description="Yum yum yum" />
       <article>
         <div className="page padding container content-grid">
-          {data.allSanityVideo.edges.map(edge => (
+          {data.allSanityRecipe.edges.map(edge => (
             <Link
               key={edge.node.id}
               style={{ textDecoration: `none` }}
@@ -39,7 +39,7 @@ export default function IndexPage({ data }) {
 
 export const pageQuery = graphql`
   query {
-    allSanityVideo {
+    allSanityRecipe {
       edges {
         node {
           id
