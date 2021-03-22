@@ -1,5 +1,3 @@
-import gql from "graphql-tag"
-
 export const RECIPE_FRAGMENT = `
       title
       subtitle
