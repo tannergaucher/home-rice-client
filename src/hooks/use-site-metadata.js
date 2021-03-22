@@ -8,6 +8,7 @@ export default function useSiteMetadata() {
           siteMetadata {
             title
             description
+            author
           }
         }
       }
