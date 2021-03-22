@@ -35,7 +35,7 @@ export default function IndexPage({ data }) {
 
 export const pageQuery = graphql`
   query {
-    allSanityRecipe {
+    allSanityRecipe(filter: { draft: { eq: false } }) {
       edges {
         node {
           id
