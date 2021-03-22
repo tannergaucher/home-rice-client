@@ -5,7 +5,11 @@ import { Helmet } from "react-helmet"
 import useSiteMetadata from "../hooks/use-site-metadata"
 
 function SEO({ description, lang, meta, title }) {
-  const { title, description: metadataDescription, author } = useSiteMetadata()
+  const {
+    title: metadataTitle,
+    description: metadataDescription,
+    author,
+  } = useSiteMetadata()
 
   const metaDescription = description || metadataDescription
 
@@ -15,7 +19,7 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${metadataTitle}`}
       meta={[
         {
           name: `description`,
