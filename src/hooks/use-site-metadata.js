@@ -5,11 +5,7 @@ export default function useSiteMetadata() {
     graphql`
       query {
         site {
-          siteMetadata {
-            title
-            description
-            author
-          }
+          ...SiteMetadataFragment
         }
       }
     `
