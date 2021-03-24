@@ -1,9 +1,15 @@
-@import url("../node_modules/semantic-styles/package/modes/dark.css");
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;800&display=swap");
 
 :root {
-  --accent-1: tomato;
-  --accent-2: #cc4f38;
-  --shadow-color: rgb(37 21 17 / 88%);
+  --serif: "Shippori Mincho B1", serif;
+}
+
+body {
+  font-family: var(--serif);
+}
+
+.btn {
+  font-family: var(--serif);
 }
 
 /* YT embed container */

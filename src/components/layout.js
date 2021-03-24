@@ -12,19 +12,23 @@ const Layout = ({ children }) => {
   return (
     <div>
       <header className="header container padding">
-        <Link to="/">
-          <h3
+        <Link to="/" style={{ textDecoration: `none` }}>
+          <h2
             className="title"
-            style={{ margin: `0`, padding: `var(--space-lg) 0` }}
+            style={{
+              margin: `var(--space-xl) 0`,
+            }}
           >
             {title}
-          </h3>
+          </h2>
         </Link>
       </header>
       <main className="main">{children}</main>
       <footer className="footer container padding">
-        <Link to="/">
-          <h3 className="title">{title}</h3>
+        <Link to="/" style={{ textDecoration: `none` }}>
+          <h2 className="title" style={{ margin: `var(--space-xl) 0` }}>
+            {title}
+          </h2>
         </Link>
       </footer>
     </div>
