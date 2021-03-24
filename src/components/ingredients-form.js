@@ -26,7 +26,7 @@ export default function IngredientsForm({ ingredients, children }) {
           <hr className="hr" />
         </>
       )}
-      {children}
+      <ul>{children}</ul>
     </form>
   )
 }

@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 import BlockContent from "@sanity/block-content-to-react"
 
 import {
@@ -21,21 +22,25 @@ export default function VideoPageTemplate({ data }) {
           className="page container card"
           style={{ marginBlockStart: `0` }}
         >
-          <div className="responsive-container">
-            <iframe
-              title={data.sanityRecipe.title}
-              className="responsive-iframe"
-              id="player"
-              type="text/html"
-              src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=0&autoplay=1&rel=0`}
-              frameBorder="0"
-              allowFullScreen={true}
-              style={{
-                borderTopLeftRadius: `var(--radius)`,
-                borderTopRightRadius: `var(--radius)`,
-              }}
-            ></iframe>
-          </div>
+          {data.sanityRecipe.youtubeVideoId ? (
+            <div className="responsive-container">
+              <iframe
+                title={data.sanityRecipe.title}
+                className="responsive-iframe"
+                id="player"
+                type="text/html"
+                src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=0&autoplay=1&rel=0`}
+                frameBorder="0"
+                allowFullScreen={true}
+                style={{
+                  borderTopLeftRadius: `var(--radius)`,
+                  borderTopRightRadius: `var(--radius)`,
+                }}
+              ></iframe>
+            </div>
+          ) : (
+            <Img fluid={data.sanityRecipe.mainImage.asset.fluid} />
+          )}
           <br />
           <div className="container padding">
             <h1 style={{ marginBlockStart: `var(--space-md)` }}>
@@ -48,7 +53,7 @@ export default function VideoPageTemplate({ data }) {
             <IngredientsForm ingredients={data.sanityRecipe.ingredients}>
               {data.sanityRecipe.ingredients.map((ingredient, i) => (
                 <IngredientsFormItem
-                  key={ingredient.id}
+                  key={ingredient._id}
                   ingredient={ingredient}
                   order={i + 1}
                 />
@@ -71,8 +76,15 @@ export const pageQuery = graphql`
       subtitle
       _rawBody
       youtubeVideoId
+      mainImage {
+        asset {
+          fluid {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
       ingredients {
-        id
+        _id
         text
         ASIN
       }
