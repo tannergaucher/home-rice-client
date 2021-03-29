@@ -46,7 +46,7 @@ export default function VideoPageTemplate({ data }) {
             <h1 style={{ marginBlockStart: `var(--space-md)` }}>
               {data.sanityRecipe.title}
             </h1>
-            <h2 style={{ color: `var(--grey)` }}>
+            <h2 className="text--md" style={{ color: `var(--grey)` }}>
               {data.sanityRecipe.subtitle}
             </h2>
             <br />

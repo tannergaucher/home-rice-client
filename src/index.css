@@ -2,6 +2,10 @@
 
 :root {
   --serif: "Shippori Mincho B1", serif;
+  --accent-1-light: black;
+  --accent-2-light: tomato;
+  --accent-1-dark: white;
+  --accent-2-dark: tomato;
 }
 
 body {
@@ -41,4 +45,8 @@ li:last-child {
 .content-grid {
   align-items: initial;
   margin-top: 0;
+}
+
+a {
+  text-decoration: underline;
 }
