@@ -11,8 +11,6 @@ import {
 } from "../components"
 
 export default function VideoPageTemplate({ data }) {
-  console.log(`data`, data)
-
   return (
     <Layout>
       <SEO
@@ -45,13 +43,14 @@ export default function VideoPageTemplate({ data }) {
           )}
           <br />
           <div className="container padding">
-            <h1 style={{ marginBlockStart: `var(--space-md)` }}>
+            <h1 style={{ marginBlockStart: `var(--space-lg)` }}>
               {data.sanityRecipe.title}
             </h1>
             <h2 className="text--md" style={{ color: `var(--grey)` }}>
               {data.sanityRecipe.subtitle}
             </h2>
             <IngredientsForm ingredients={data.sanityRecipe.ingredients}>
+              <h3>Ingredients</h3>
               {data.sanityRecipe.ingredients.map((ingredient, i) => (
                 <IngredientsFormItem
                   key={ingredient._id}
@@ -59,20 +58,44 @@ export default function VideoPageTemplate({ data }) {
                   order={i + 1}
                 />
               ))}
-
               {data.sanityRecipe.optionalIngredients &&
-                data.sanityRecipe.optionalIngredients.map((ingredient, i) => (
-                  <IngredientsFormItem
-                    key={ingredient._id}
-                    ingredient={ingredient}
-                    order={data.sanityRecipe.ingredients.length + i + 1}
-                    optional
-                  />
-                ))}
+                data.sanityRecipe.optionalIngredients.map(
+                  (optionalIngredient, i) => (
+                    <IngredientsFormItem
+                      key={optionalIngredient._id}
+                      ingredient={optionalIngredient}
+                      order={data.sanityRecipe.ingredients.length + i + 1}
+                      optional
+                    />
+                  )
+                )}
+              {data.sanityRecipe.gear.length > 0 && (
+                <>
+                  <h3>Gear</h3>
+                  {data.sanityRecipe.gear.map((gearItem, i) => (
+                    <IngredientsFormItem
+                      key={gearItem._id}
+                      ingredient={gearItem}
+                      gearItem={gearItem}
+                      order={
+                        data.sanityRecipe.ingredients.length +
+                        data.sanityRecipe.optionalIngredients.length +
+                        i +
+                        1
+                      }
+                      gear
+                    />
+                  ))}
+                </>
+              )}
             </IngredientsForm>
             <hr className="hr" />
-            <BlockContent blocks={data.sanityRecipe._rawBody} />
-            <hr className="hr" />
+            {data.sanityRecipe._rawBody && (
+              <>
+                <BlockContent blocks={data.sanityRecipe._rawBody} />
+                <hr className="hr" />
+              </>
+            )}
           </div>
         </article>
       </div>
@@ -103,6 +126,12 @@ export const pageQuery = graphql`
         _id
         text
         ASIN
+      }
+      gear {
+        _id
+        text
+        ASIN
+        externalHref
       }
     }
   }

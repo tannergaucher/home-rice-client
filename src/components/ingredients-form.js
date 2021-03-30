@@ -3,7 +3,7 @@ import React from "react"
 import { AWS_ASSOCIATE_ID } from "../utils/constants"
 
 export default function IngredientsForm({ ingredients, children }) {
-  const [amazonIngredients] = ingredients.filter(
+  const amazonIngredients = ingredients.filter(
     ingredient => ingredient.ASIN !== null
   )
 
@@ -16,6 +16,7 @@ export default function IngredientsForm({ ingredients, children }) {
             style={{
               width: `100%`,
               marginBottom: `0`,
+              marginTop: `var(--space-md)`,
             }}
             className="btn btn-primary"
             type="submit"
