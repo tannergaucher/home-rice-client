@@ -11,6 +11,8 @@ import {
 } from "../components"
 
 export default function VideoPageTemplate({ data }) {
+  console.log(`data`, data)
+
   return (
     <Layout>
       <SEO
@@ -49,7 +51,6 @@ export default function VideoPageTemplate({ data }) {
             <h2 className="text--md" style={{ color: `var(--grey)` }}>
               {data.sanityRecipe.subtitle}
             </h2>
-            <br />
             <IngredientsForm ingredients={data.sanityRecipe.ingredients}>
               {data.sanityRecipe.ingredients.map((ingredient, i) => (
                 <IngredientsFormItem
@@ -58,6 +59,16 @@ export default function VideoPageTemplate({ data }) {
                   order={i + 1}
                 />
               ))}
+
+              {data.sanityRecipe.optionalIngredients &&
+                data.sanityRecipe.optionalIngredients.map((ingredient, i) => (
+                  <IngredientsFormItem
+                    key={ingredient._id}
+                    ingredient={ingredient}
+                    order={data.sanityRecipe.ingredients.length + i + 1}
+                    optional
+                  />
+                ))}
             </IngredientsForm>
             <hr className="hr" />
             <BlockContent blocks={data.sanityRecipe._rawBody} />
@@ -84,6 +95,11 @@ export const pageQuery = graphql`
         }
       }
       ingredients {
+        _id
+        text
+        ASIN
+      }
+      optionalIngredients {
         _id
         text
         ASIN

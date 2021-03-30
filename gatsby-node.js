@@ -49,4 +49,31 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   })
+
+  const allIngredients = await graphql(`
+    query {
+      allSanityIngredient {
+        edges {
+          node {
+            id
+            ASIN
+            text
+          }
+        }
+      }
+    }
+  `)
+
+  // const ingredients = allIngredients.data.allSanityIngredient.edges
+  // console.log(`allIngredients`, allIngredients)
+
+  // ingredients.forEach(edge => {
+  //   createPage({
+  //     path: `/${edge.node.slug.current}`,
+  //     component: path.resolve(`./src/templates/ingredient-template.js`),
+  //     context: {
+  //       slug: edge.node.slug.current,
+  //     },
+  //   })
+  // })
 }

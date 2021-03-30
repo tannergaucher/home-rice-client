@@ -2,7 +2,8 @@ import React from "react"
 
 import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 
-export default function IngredientsFormItem({ ingredient, order }) {
+export default function IngredientsFormItem({ ingredient, order, optional }) {
+  console.log(`optional`, optional)
   return (
     <>
       {ingredient.ASIN ? (
@@ -13,10 +14,24 @@ export default function IngredientsFormItem({ ingredient, order }) {
         >
           <input type="hidden" name={`ASIN.${order}`} value={ingredient.ASIN} />
           <input type="hidden" name={`Quantity.${order}`} value={1} />
-          <li style={{ textDecoration: `none` }}>{ingredient.text}</li>
+          <li style={{ textDecoration: `none` }}>
+            {ingredient.text}{" "}
+            {optional && (
+              <span className="text--sm" style={{ color: `var(--grey)` }}>
+                optional
+              </span>
+            )}
+          </li>
         </a>
       ) : (
-        <li style={{ textDecoration: `none` }}>{ingredient.text}</li>
+        <li style={{ textDecoration: `none` }}>
+          {ingredient.text}{" "}
+          {optional && (
+            <span className="text--sm" style={{ color: `var(--grey)` }}>
+              optional
+            </span>
+          )}
+        </li>
       )}
     </>
   )
