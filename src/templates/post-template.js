@@ -10,7 +10,7 @@ import {
   IngredientsFormItem,
 } from "../components"
 
-export default function VideoPageTemplate({ data }) {
+export default function PostTemplate({ data }) {
   const post = data.sanityPost
 
   return (
@@ -28,7 +28,7 @@ export default function VideoPageTemplate({ data }) {
                 className="responsive-iframe"
                 id="player"
                 type="text/html"
-                src={`https://www.youtube.com/embed/${post.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=0&autoplay=1&rel=0`}
+                src={`https://www.youtube.com/embed/${post.youtubeVideoId}?enablejsapi=1&origin=https://homerice.app&cc_load_policy=0&autoplay=1&rel=0`}
                 frameBorder="0"
                 allowFullScreen={true}
                 style={{
