@@ -39,7 +39,12 @@ export default function VideoPageTemplate({ data }) {
               ></iframe>
             </div>
           ) : (
-            <Img fluid={data.sanityRecipe.mainImage.asset.fluid} />
+            <>
+              {data.sanityRecipe.mainImage.asset &&
+                data.sanityRecipe.mainImage.asset.fluid && (
+                  <Img fluid={data.sanityRecipe.mainImage.asset.fluid} />
+                )}
+            </>
           )}
           <br />
           <div className="container padding">
