@@ -47,7 +47,7 @@ export default function VideoPageTemplate({ data }) {
             </>
           )}
           <br />
-          <div className="container padding">
+          <div className="container only-mobile-padding">
             <h1 style={{ marginBlockStart: `var(--space-lg)` }}>
               {data.sanityRecipe.title}
             </h1>
