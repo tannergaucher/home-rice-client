@@ -11,25 +11,24 @@ import {
 } from "../components"
 
 export default function VideoPageTemplate({ data }) {
+  const post = data.sanityPost
+
   return (
     <Layout>
-      <SEO
-        title={`${data.sanityRecipe.title}`}
-        description={data.sanityRecipe.subtitle}
-      />
+      <SEO title={`${post.title}`} description={post.subtitle} />
       <div className="padding">
         <article
           className="page container card"
           style={{ marginBlockStart: `0` }}
         >
-          {data.sanityRecipe.youtubeVideoId ? (
+          {post.youtubeVideoId ? (
             <div className="responsive-container">
               <iframe
-                title={data.sanityRecipe.title}
+                title={post.title}
                 className="responsive-iframe"
                 id="player"
                 type="text/html"
-                src={`https://www.youtube.com/embed/${data.sanityRecipe.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=0&autoplay=1&rel=0`}
+                src={`https://www.youtube.com/embed/${post.youtubeVideoId}?enablejsapi=1&origin=https://tg-platform.netlify.app&cc_load_policy=0&autoplay=1&rel=0`}
                 frameBorder="0"
                 allowFullScreen={true}
                 style={{
@@ -40,51 +39,48 @@ export default function VideoPageTemplate({ data }) {
             </div>
           ) : (
             <>
-              {data.sanityRecipe.mainImage.asset &&
-                data.sanityRecipe.mainImage.asset.fluid && (
-                  <Img fluid={data.sanityRecipe.mainImage.asset.fluid} />
-                )}
+              {post.mainImage.asset && post.mainImage.asset.fluid && (
+                <Img fluid={post.mainImage.asset.fluid} />
+              )}
             </>
           )}
           <br />
           <div className="container only-mobile-padding">
             <h1 style={{ marginBlockStart: `var(--space-lg)` }}>
-              {data.sanityRecipe.title}
+              {post.title}
             </h1>
             <h2 className="text--md" style={{ color: `var(--grey)` }}>
-              {data.sanityRecipe.subtitle}
+              {post.subtitle}
             </h2>
-            <IngredientsForm ingredients={data.sanityRecipe.ingredients}>
+            <IngredientsForm ingredients={post.ingredients}>
               <h3>Ingredients</h3>
-              {data.sanityRecipe.ingredients.map((ingredient, i) => (
+              {post.ingredients.map((ingredient, i) => (
                 <IngredientsFormItem
                   key={ingredient._id}
                   ingredient={ingredient}
                   order={i + 1}
                 />
               ))}
-              {data.sanityRecipe.optionalIngredients &&
-                data.sanityRecipe.optionalIngredients.map(
-                  (optionalIngredient, i) => (
-                    <IngredientsFormItem
-                      key={optionalIngredient._id}
-                      ingredient={optionalIngredient}
-                      order={data.sanityRecipe.ingredients.length + i + 1}
-                      optional
-                    />
-                  )
-                )}
-              {data.sanityRecipe.gear.length > 0 && (
+              {post.optionalIngredients &&
+                post.optionalIngredients.map((optionalIngredient, i) => (
+                  <IngredientsFormItem
+                    key={optionalIngredient._id}
+                    ingredient={optionalIngredient}
+                    order={post.ingredients.length + i + 1}
+                    optional
+                  />
+                ))}
+              {post.gear.length > 0 && (
                 <>
                   <h3>Gear</h3>
-                  {data.sanityRecipe.gear.map((gearItem, i) => (
+                  {post.gear.map((gearItem, i) => (
                     <IngredientsFormItem
                       key={gearItem._id}
                       ingredient={gearItem}
                       gearItem={gearItem}
                       order={
-                        data.sanityRecipe.ingredients.length +
-                        data.sanityRecipe.optionalIngredients.length +
+                        post.ingredients.length +
+                        post.optionalIngredients.length +
                         i +
                         1
                       }
@@ -95,9 +91,9 @@ export default function VideoPageTemplate({ data }) {
               )}
             </IngredientsForm>
             <hr className="hr" />
-            {data.sanityRecipe._rawBody && (
+            {post._rawBody && (
               <>
-                <BlockContent blocks={data.sanityRecipe._rawBody} />
+                <BlockContent blocks={post._rawBody} />
                 <hr className="hr" />
               </>
             )}
@@ -110,7 +106,7 @@ export default function VideoPageTemplate({ data }) {
 
 export const pageQuery = graphql`
   query VIDEO_PAGE_QUERY($slug: String!) {
-    sanityRecipe(slug: { current: { eq: $slug } }) {
+    sanityPost(slug: { current: { eq: $slug } }) {
       title
       subtitle
       _rawBody

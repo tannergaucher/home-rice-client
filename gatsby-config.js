@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Home Rice`,
-    description: `Is it delicious?`,
+    description: `Is It Delicious?`,
     author: `homerice.app@gmail.com`,
   },
   plugins: [

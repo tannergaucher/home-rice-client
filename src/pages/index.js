@@ -13,7 +13,7 @@ export default function IndexPage({ data }) {
       <SEO title="Home" description={description} />
       <article>
         <div className="page padding container content-grid">
-          {data.allSanityRecipe.edges.map(edge => (
+          {data.allSanityPost.edges.map(edge => (
             <Link
               key={edge.node.id}
               style={{ textDecoration: `none` }}
@@ -35,7 +35,7 @@ export default function IndexPage({ data }) {
 
 export const pageQuery = graphql`
   query {
-    allSanityRecipe(filter: { draft: { eq: false } }) {
+    allSanityPost(filter: { draft: { eq: false } }) {
       edges {
         node {
           id

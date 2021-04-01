@@ -3,9 +3,9 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const allVideo = await graphql(`
+  const allPosts = await graphql(`
     query {
-      allSanityRecipe {
+      allSanityPost {
         edges {
           node {
             title
@@ -24,13 +24,13 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const videos = allVideo.data.allSanityRecipe.edges
+  const posts = allPosts.data.allSanityPost.edges
 
-  videos.forEach(edge => {
+  posts.forEach(edge => {
     if (process.env.NODE_ENV === "development") {
       createPage({
         path: `/${edge.node.slug.current}`,
-        component: path.resolve(`./src/templates/video-template.js`),
+        component: path.resolve(`./src/templates/post-template.js`),
         context: {
           slug: edge.node.slug.current,
         },
@@ -41,7 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
       if (edge.node.draft === false) {
         createPage({
           path: `/${edge.node.slug.current}`,
-          component: path.resolve(`./src/templates/video-template.js`),
+          component: path.resolve(`./src/templates/post-template.js`),
           context: {
             slug: edge.node.slug.current,
           },
@@ -49,31 +49,4 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   })
-
-  const allIngredients = await graphql(`
-    query {
-      allSanityIngredient {
-        edges {
-          node {
-            id
-            ASIN
-            text
-          }
-        }
-      }
-    }
-  `)
-
-  // const ingredients = allIngredients.data.allSanityIngredient.edges
-  // console.log(`allIngredients`, allIngredients)
-
-  // ingredients.forEach(edge => {
-  //   createPage({
-  //     path: `/${edge.node.slug.current}`,
-  //     component: path.resolve(`./src/templates/ingredient-template.js`),
-  //     context: {
-  //       slug: edge.node.slug.current,
-  //     },
-  //   })
-  // })
 }
