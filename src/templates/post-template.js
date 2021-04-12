@@ -4,8 +4,8 @@ import Img from "gatsby-image"
 import BlockContent from "@sanity/block-content-to-react"
 
 import {
-  Layout,
   SEO,
+  Layout,
   IngredientsForm,
   IngredientsFormItem,
 } from "../components"
@@ -99,6 +99,13 @@ export default function PostTemplate({ data }) {
             )}
           </div>
         </article>
+        <br />
+        <blockquote className="blockquote  container">
+          <h4 className="card-heading">Note</h4>
+          <p className="card-text">
+            <i>This post may contain affiliate links</i>
+          </p>
+        </blockquote>
       </div>
     </Layout>
   )
