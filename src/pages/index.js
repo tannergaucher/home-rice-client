@@ -12,25 +12,27 @@ export default function IndexPage({ data }) {
     <Layout>
       <SEO title="Home" description={description} />
       <article>
-        <div className="page padding container content-grid">
-          {data.allSanityPost.edges.map(
-            edge =>
-              console.log("edge", edge) || (
-                <Link
-                  key={edge.node.id}
-                  style={{ textDecoration: `none` }}
-                  to={`/${edge.node.slug.current}`}
-                >
-                  <div className="card">
-                    {edge.node.mainImage && edge.node.mainImage.asset && (
-                      <Img fluid={edge.node.mainImage.asset.fluid} />
-                    )}
-                    <h3 className="card-heading">{edge.node.title}</h3>
-                    <p className="card-text">{edge.node.subtitle}</p>
-                  </div>
-                </Link>
-              )
-          )}
+        <div
+          className="page padding container content-grid"
+          style={{
+            marginTop: `var(--space-md)`,
+          }}
+        >
+          {data.allSanityPost.edges.map(edge => (
+            <Link
+              key={edge.node.id}
+              style={{ textDecoration: `none` }}
+              to={`/${edge.node.slug.current}`}
+            >
+              <div className="card">
+                {edge.node.mainImage && edge.node.mainImage.asset && (
+                  <Img fluid={edge.node.mainImage.asset.fluid} />
+                )}
+                <h3 className="card-heading">{edge.node.title}</h3>
+                <p className="card-text">{edge.node.subtitle}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </article>
     </Layout>

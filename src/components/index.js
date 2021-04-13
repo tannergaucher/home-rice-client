@@ -4,6 +4,7 @@ import Layout from "./layout"
 import SEO from "./seo"
 import MenuBtn from "./menu-btn"
 import IngredientsSearch from "./ingredients-search"
+import Hamburger from "./hamburger"
 
 export {
   IngredientsForm,
@@ -12,4 +13,5 @@ export {
   SEO,
   MenuBtn,
   IngredientsSearch,
+  Hamburger,
 }
