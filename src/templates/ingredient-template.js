@@ -1,18 +1,28 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-
 import Img from "gatsby-image"
 
 import { Layout, SEO } from "../components"
+import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 
 export default function IngredientPageTemplate({ data }) {
-  console.log(`data`, data)
-
   return (
     <Layout>
       <SEO />
       <article className="container padding">
-        <h1>{data.sanityIngredient.text}</h1>
+        {data.sanityIngredient.ASIN ? (
+          <a
+            href={
+              data.sanityIngredient.ASIN &&
+              getAmazonAffiliateLink(data.sanityIngredient.ASIN)
+            }
+          >
+            <h1>{data.sanityIngredient.text}</h1>
+          </a>
+        ) : (
+          <h1>{data.sanityIngredient.text}</h1>
+        )}
+
         <div className="content-grid" style={{ marginTop: `var(--space-xl)` }}>
           {data.sanityIngredient.posts &&
             data.sanityIngredient.posts.map(post => (
@@ -40,6 +50,7 @@ export const pageQuery = graphql`
     sanityIngredient(slug: { current: { eq: $slug } }) {
       id
       text
+      ASIN
       posts {
         _id
         title

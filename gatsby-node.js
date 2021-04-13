@@ -26,8 +26,8 @@ exports.createResolvers = ({ createResolvers }) => {
     SanityIngredient: {
       posts: {
         type: ["SanityPost"],
-        resolve(source, args, context, info) {
-          return context.nodeModel.runQuery({
+        async resolve(source, args, context, info) {
+          const ingredientsQuery = await context.nodeModel.runQuery({
             type: "SanityPost",
             query: {
               filter: {
@@ -41,6 +41,31 @@ exports.createResolvers = ({ createResolvers }) => {
               },
             },
           })
+
+          return ingredientsQuery
+        },
+      },
+    },
+    SanityGear: {
+      posts: {
+        type: ["SanityPost"],
+        async resolve(source, args, context, info) {
+          const gearQuery = await context.nodeModel.runQuery({
+            type: "SanityPost",
+            query: {
+              filter: {
+                gear: {
+                  elemMatch: {
+                    _id: {
+                      eq: source._id,
+                    },
+                  },
+                },
+              },
+            },
+          })
+
+          return gearQuery
         },
       },
     },
