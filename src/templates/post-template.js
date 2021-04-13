@@ -100,9 +100,12 @@ export default function PostTemplate({ data }) {
           </div>
         </article>
         <br />
-        <blockquote className="blockquote  container">
-          <h4 className="card-heading">Note</h4>
-          <p className="card-text">
+        <blockquote
+          className="blockquote  container"
+          style={{ padding: `var(--space-sm)` }}
+        >
+          <h4 className="card-heading text--sm">Note</h4>
+          <p className="card-text text--sm">
             <i>This post may contain affiliate links</i>
           </p>
         </blockquote>

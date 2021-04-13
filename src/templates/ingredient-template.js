@@ -1,15 +1,60 @@
-// import React from "react"
-// import { graphql } from "gatsby"
-// import Img from "gatsby-image"
-// import BlockContent from "@sanity/block-content-to-react"
+import React from "react"
+import { graphql, Link } from "gatsby"
 
-// import { Layout, SEO } from "../components"
+import Img from "gatsby-image"
 
-// export default function IngredientPageTemplate({ data }) {
-//   return (
-//     <Layout>
-//       <SEO />
-//       <h1>Ingredient</h1>
-//     </Layout>
-//   )
-// }
+import { Layout, SEO } from "../components"
+
+export default function IngredientPageTemplate({ data }) {
+  console.log(`data`, data)
+
+  return (
+    <Layout>
+      <SEO />
+      <article className="container padding">
+        <h1>{data.sanityIngredient.text}</h1>
+        <div className="content-grid" style={{ marginTop: `var(--space-xl)` }}>
+          {data.sanityIngredient.posts &&
+            data.sanityIngredient.posts.map(post => (
+              <Link
+                to={`/${post.slug.current}`}
+                style={{ textDecoration: `none` }}
+              >
+                <div className="card">
+                  {post.mainImage.asset && (
+                    <Img fluid={post.mainImage.asset.fluid} />
+                  )}
+                  <h4 className="card-heading">{post.title}</h4>
+                  <p className="card-text">{post.subtitle}</p>
+                </div>
+              </Link>
+            ))}
+        </div>
+      </article>
+    </Layout>
+  )
+}
+
+export const pageQuery = graphql`
+  query INGREDIENT_PAGE_QUERY($slug: String!) {
+    sanityIngredient(slug: { current: { eq: $slug } }) {
+      id
+      text
+      posts {
+        _id
+        title
+        subtitle
+        mainImage {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        slug {
+          current
+        }
+      }
+    }
+  }
+`

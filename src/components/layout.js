@@ -3,8 +3,11 @@ import { Link } from "gatsby"
 import useSiteMetadata from "../hooks/use-site-metadata"
 
 import "semantic-styles"
+import "@semantic-styles/reach-ui"
 
 import "../index.css"
+
+import { MenuBtn } from "../components"
 
 const Layout = ({ children }) => {
   const { title } = useSiteMetadata()
@@ -22,6 +25,7 @@ const Layout = ({ children }) => {
             {title}
           </h2>
         </Link>
+        <MenuBtn />
       </header>
       <main className="main">{children}</main>
       <footer className="footer container padding">
