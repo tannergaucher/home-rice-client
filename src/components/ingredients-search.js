@@ -6,7 +6,6 @@ import {
   ComboboxPopover,
   ComboboxList,
   ComboboxOption,
-  ComboboxOptionText,
 } from "@reach/combobox"
 
 import "@reach/combobox/styles.css"

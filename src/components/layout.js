@@ -4,7 +4,6 @@ import useSiteMetadata from "../hooks/use-site-metadata"
 
 import "semantic-styles"
 import "@semantic-styles/reach-ui"
-
 import "../index.css"
 
 import { MenuBtn } from "../components"
@@ -14,7 +13,10 @@ const Layout = ({ children }) => {
 
   return (
     <div>
-      <header className="header container padding">
+      <header
+        className="container padding"
+        style={{ marginBlockEnd: `var(--space-xl)` }}
+      >
         <Link to="/" style={{ textDecoration: `none` }}>
           <h2
             className="title"

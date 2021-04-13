@@ -4,28 +4,16 @@ import { Link } from "gatsby"
 import { Menu, MenuList, MenuButton, MenuLink } from "@reach/menu-button"
 import "@reach/menu-button/styles.css"
 
-import useIsMobile from "../hooks/use-is-mobile"
-import { Hamburger } from "../components"
-
 export default function MyMenuButton() {
-  const isMobile = useIsMobile()
-
   return (
     <Menu>
       <MenuButton
         className="btn"
         style={{
           marginBottom: `0`,
-          padding: isMobile ? `var(--space-sm)` : ``,
         }}
       >
-        {isMobile ? (
-          <Hamburger />
-        ) : (
-          <>
-            <span className="text--md">Menu</span> <span aria-hidden>▾</span>
-          </>
-        )}
+        <span className="text--md">Menu</span> <span aria-hidden>▾</span>
       </MenuButton>
 
       <MenuList style={{ width: `45vmin` }}>
