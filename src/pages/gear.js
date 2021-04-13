@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Layout } from "../components"
+import { Layout, AffiliateLinkDisclaimer } from "../components"
 
 import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 
@@ -34,6 +34,9 @@ export default function GearPage({ data }) {
           )}
         </div>
       </div>
+      <section className="padding" style={{ marginTop: `var(--space-xl)` }}>
+        <AffiliateLinkDisclaimer />
+      </section>
     </Layout>
   )
 }
