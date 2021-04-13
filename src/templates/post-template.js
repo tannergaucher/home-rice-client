@@ -8,6 +8,7 @@ import {
   Layout,
   IngredientsForm,
   IngredientsFormItem,
+  AffiliateLinkDisclaimer,
 } from "../components"
 
 export default function PostTemplate({ data }) {
@@ -100,15 +101,7 @@ export default function PostTemplate({ data }) {
           </div>
         </article>
         <br />
-        <blockquote
-          className="blockquote  container"
-          style={{ padding: `var(--space-sm)` }}
-        >
-          <h4 className="card-heading text--sm">Note</h4>
-          <p className="card-text text--sm">
-            <i>This post may contain affiliate links</i>
-          </p>
-        </blockquote>
+        <AffiliateLinkDisclaimer />
       </div>
     </Layout>
   )

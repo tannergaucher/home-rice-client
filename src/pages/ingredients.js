@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import { Layout } from "../components"
+import { Layout, AffiliateLinkDisclaimer } from "../components"
 
 export default function IngredientsPage({ data }) {
   return (
@@ -32,6 +32,10 @@ export default function IngredientsPage({ data }) {
           )}
         </div>
       </div>
+      <br />
+      <section className="padding">
+        <AffiliateLinkDisclaimer />
+      </section>
     </Layout>
   )
 }
