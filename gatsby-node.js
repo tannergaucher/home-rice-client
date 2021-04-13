@@ -150,7 +150,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const ingredients = allIngredients.data.allSanityIngredient.edges
 
   ingredients.forEach(edge => {
-    console.log(`edge`, edge)
     if (edge.node.slug) {
       createPage({
         path: `/ingredients/${edge.node.slug.current}`,
