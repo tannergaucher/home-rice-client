@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
       >
         <Link to="/" style={{ textDecoration: `none` }}>
           <h2
-            className="title"
+            className="title text--xxl"
             style={{
               margin: `var(--space-xl) 0`,
               fontStyle: `italic`,
@@ -28,7 +28,6 @@ const Layout = ({ children }) => {
             {title}
           </h2>
         </Link>
-
         <MenuBtn />
       </header>
       <main className="main">{children}</main>

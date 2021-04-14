@@ -22,7 +22,6 @@ export default function IngredientPageTemplate({ data }) {
         ) : (
           <h1>{data.sanityIngredient.text}</h1>
         )}
-
         <div className="content-grid" style={{ marginTop: `var(--space-xl)` }}>
           {data.sanityIngredient.posts &&
             data.sanityIngredient.posts.map(post => (

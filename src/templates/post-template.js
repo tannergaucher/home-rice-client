@@ -108,7 +108,7 @@ export default function PostTemplate({ data }) {
 }
 
 export const pageQuery = graphql`
-  query VIDEO_PAGE_QUERY($slug: String!) {
+  query($slug: String!) {
     sanityPost(slug: { current: { eq: $slug } }) {
       title
       subtitle

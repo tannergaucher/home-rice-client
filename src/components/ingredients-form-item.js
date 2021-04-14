@@ -30,11 +30,9 @@ export default function IngredientsFormItem({
           <li style={{ textDecoration: `none` }}>{ingredient.text} </li>
         </a>
       )}
-
       {ingredient && !ingredient.ASIN && gearItem !== true && (
         <li style={{ textDecoration: `none` }}>{ingredient.text}</li>
       )}
-
       {optional && (
         <small
           style={{
