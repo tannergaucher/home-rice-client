@@ -1,7 +1,7 @@
 import React from "react"
+import { graphql } from "gatsby"
 
 import { Layout, AffiliateLinkDisclaimer } from "../components"
-
 import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 
 export default function GearPage({ data }) {
