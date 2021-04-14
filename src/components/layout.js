@@ -9,7 +9,7 @@ import "../index.css"
 import { MenuBtn } from "../components"
 
 const Layout = ({ children }) => {
-  const { title } = useSiteMetadata()
+  const { title, description } = useSiteMetadata()
 
   return (
     <div>
@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
       >
         <Link to="/" style={{ textDecoration: `none` }}>
           <h1
-            className="title text--xxxl"
+            className="title"
             style={{
               margin: `var(--space-xl) 0`,
               fontStyle: `italic`,
@@ -28,6 +28,7 @@ const Layout = ({ children }) => {
             {title}
           </h1>
         </Link>
+
         <MenuBtn />
       </header>
       <main className="main">{children}</main>
