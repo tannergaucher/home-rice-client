@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "home-rice-client",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Gatsby static site for homerice.app",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Tanner Gaucher <tannergaucher@gmail.com>",
   "dependencies": {
     "@reach/combobox": "^0.15.0",
     "@reach/menu-button": "^0.15.0",
