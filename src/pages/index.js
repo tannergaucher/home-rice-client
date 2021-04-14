@@ -12,7 +12,7 @@ export default function IndexPage({ data }) {
     <Layout>
       <SEO title="All Posts" description={description} />
       <article>
-        <div className="page padding container content-grid">
+        <div className="padding container content-grid">
           {data.allSanityPost.edges.map(edge => (
             <Link
               key={edge.node.id}
