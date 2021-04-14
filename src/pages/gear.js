@@ -1,12 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { Layout, AffiliateLinkDisclaimer } from "../components"
+import { Layout, AffiliateLinkDisclaimer, SEO } from "../components"
 import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 
 export default function GearPage({ data }) {
   return (
     <Layout>
+      <SEO title="Gear" />
       <div className="padding container">
         <h1>Gear</h1>
         <div

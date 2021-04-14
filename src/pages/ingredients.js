@@ -1,11 +1,12 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import { Layout, AffiliateLinkDisclaimer } from "../components"
+import { Layout, AffiliateLinkDisclaimer, SEO } from "../components"
 
 export default function IngredientsPage({ data }) {
   return (
     <Layout>
+      <SEO title="Ingredients" />
       <div className="padding container">
         <h1>Ingredients</h1>
         <div

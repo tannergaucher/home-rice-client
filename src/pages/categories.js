@@ -2,11 +2,12 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-import { Layout } from "../components"
+import { Layout, SEO } from "../components"
 
 export default function CategoriesPage({ data }) {
   return (
     <Layout>
+      <SEO title="Categories" />
       <div className="padding container">
         <h1>Categories</h1>
         <div style={{ marginTop: `var(--space-xl)` }}>
@@ -24,7 +25,9 @@ export default function CategoriesPage({ data }) {
                             style={{ textDecoration: `none` }}
                             to={`/${post.slug.current}`}
                           >
-                            <Img fluid={post.mainImage.asset.fluid} />
+                            {post.mainImage.asset && (
+                              <Img fluid={post.mainImage.asset.fluid} />
+                            )}
                             <h4 className="card-heading">{post.title}</h4>
                             <p className="card-text">{post.subtitle}</p>
                           </Link>
