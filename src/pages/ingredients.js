@@ -21,7 +21,7 @@ export default function IngredientsPage({ data }) {
                   style={{ textDecoration: `none` }}
                 >
                   <div className="card">
-                    <h4 className="card-heading">{edge.node.text}</h4>
+                    <h3 className="card-heading">{edge.node.text}</h3>
                     <p className="card-text">
                       {edge.node.posts.length}{" "}
                       {`post${edge.node.posts.length > 1 ? `s` : ``}`}

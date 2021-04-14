@@ -21,7 +21,7 @@ export default function GearPage({ data }) {
                   style={{ textDecoration: `none` }}
                 >
                   <div className="card">
-                    <h4 className="card-heading">{edge.node.text}</h4>
+                    <h3 className="card-heading">{edge.node.text}</h3>
                     {edge.node.posts && (
                       <p className="card-text">
                         {edge.node.posts.length} Post

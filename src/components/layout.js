@@ -18,21 +18,25 @@ const Layout = ({ children }) => {
         style={{ marginBlockEnd: `var(--space-xl)` }}
       >
         <Link to="/" style={{ textDecoration: `none` }}>
-          <h2
-            className="title"
+          <h1
+            className="title text--xxxl"
             style={{
               margin: `var(--space-xl) 0`,
+              fontStyle: `italic`,
             }}
           >
             {title}
-          </h2>
+          </h1>
         </Link>
         <MenuBtn />
       </header>
       <main className="main">{children}</main>
       <footer className="footer container padding">
         <Link to="/" style={{ textDecoration: `none` }}>
-          <h2 className="title" style={{ margin: `var(--space-xl) 0` }}>
+          <h2
+            className="title text--xxl"
+            style={{ margin: `var(--space-xl) 0`, fontStyle: `italic` }}
+          >
             {title}
           </h2>
         </Link>
