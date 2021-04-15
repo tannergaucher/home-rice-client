@@ -1,1 +1,1 @@
-export const AWS_ASSOCIATE_ID = `tannergaucher-20`
+export const AWS_ASSOCIATE_ID = `homerice-20`
