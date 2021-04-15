@@ -22,7 +22,7 @@ export default function IngredientPageTemplate({ data }) {
             </h1>
           </a>
         ) : (
-          <h1>{data.sanityIngredient.text}</h1>
+          <h1 style={{ textAlign: `center` }}>{data.sanityIngredient.text}</h1>
         )}
         <div className="content-grid" style={{ marginTop: `var(--space-xl)` }}>
           {data.sanityIngredient.posts &&
