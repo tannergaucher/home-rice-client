@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import BlockContent from "@sanity/block-content-to-react"
 
@@ -11,8 +11,12 @@ import {
   AffiliateLinkDisclaimer,
 } from "../components"
 
-export default function PostTemplate({ data }) {
+import useIsMobile from "../hooks/use-is-mobile"
+
+export default function PostTemplate({ data, pageContext }) {
   const post = data.sanityPost
+
+  const isMobile = useIsMobile()
 
   return (
     <Layout>
@@ -97,8 +101,54 @@ export default function PostTemplate({ data }) {
             )}
           </div>
         </div>
-        <br />
-        <AffiliateLinkDisclaimer />
+
+        <section style={{ marginTop: `var(--space-xl)` }}>
+          <AffiliateLinkDisclaimer />
+        </section>
+
+        <section
+          className="container"
+          style={{
+            display: `grid`,
+            gridTemplateColumns: isMobile ? `` : `1fr 1fr`,
+            gridTemplateRows: isMobile ? `1fr 1fr` : ``,
+            gap: `var(--space-md)`,
+            marginTop: `var(--space-xl)`,
+          }}
+        >
+          {pageContext.nextPost && (
+            <Link
+              to={`/${pageContext.nextPost.slug.current}`}
+              style={{ textDecoration: `none` }}
+            >
+              <div className="card">
+                <img
+                  srcSet={pageContext.nextPost.mainImage.asset.fluid.srcSet}
+                  sizes={pageContext.nextPost.mainImage.asset.fluid.sizes}
+                  alt=""
+                />
+                <h4 className="card-heading">Next:</h4>
+                <h4 className="card-text ">{pageContext.nextPost.title}</h4>
+              </div>
+            </Link>
+          )}
+          {pageContext.previousPost && (
+            <Link
+              to={`/${pageContext.previousPost.slug.current}`}
+              style={{ textDecoration: `none` }}
+            >
+              <div className="card">
+                <img
+                  srcSet={pageContext.previousPost.mainImage.asset.fluid.srcSet}
+                  sizes={pageContext.previousPost.mainImage.asset.fluid.sizes}
+                  alt=""
+                />
+                <h4 className="card-heading">Previous:</h4>
+                <h4 className="card-text">{pageContext.previousPost.title}</h4>
+              </div>
+            </Link>
+          )}
+        </section>
       </div>
     </Layout>
   )

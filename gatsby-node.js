@@ -5,7 +5,7 @@ exports.createResolvers = ({ createResolvers }) => {
     SanityCategory: {
       posts: {
         type: ["SanityPost"],
-        resolve(source, args, context, info) {
+        resolve(source, _args, context, _info) {
           return context.nodeModel.runQuery({
             type: "SanityPost",
             query: {
@@ -26,7 +26,7 @@ exports.createResolvers = ({ createResolvers }) => {
     SanityIngredient: {
       posts: {
         type: ["SanityPost"],
-        async resolve(source, args, context, info) {
+        async resolve(source, _args, context, _info) {
           const ingredientsQuery = await context.nodeModel.runQuery({
             type: "SanityPost",
             query: {
@@ -49,7 +49,7 @@ exports.createResolvers = ({ createResolvers }) => {
     SanityGear: {
       posts: {
         type: ["SanityPost"],
-        async resolve(source, args, context, info) {
+        async resolve(source, _args, context, _info) {
           const gearQuery = await context.nodeModel.runQuery({
             type: "SanityPost",
             query: {
@@ -77,10 +77,41 @@ exports.createResolvers = ({ createResolvers }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  // mainImage.asset.srcSet / sizes because gatsbySanityImage fragment not working
   const allPosts = await graphql(`
     query {
-      allSanityPost {
+      allSanityPost(sort: { fields: publishedAt, order: DESC }) {
         edges {
+          next {
+            id
+            title
+            slug {
+              current
+            }
+            mainImage {
+              asset {
+                fluid {
+                  srcSet
+                  sizes
+                }
+              }
+            }
+          }
+          previous {
+            id
+            title
+            slug {
+              current
+            }
+            mainImage {
+              asset {
+                fluid {
+                  srcSet
+                  sizes
+                }
+              }
+            }
+          }
           node {
             title
             subtitle
@@ -107,6 +138,8 @@ exports.createPages = async ({ graphql, actions }) => {
         component: path.resolve(`./src/templates/post-template.js`),
         context: {
           slug: edge.node.slug.current,
+          nextPost: edge.previous,
+          previousPost: edge.next,
         },
       })
     }
@@ -118,6 +151,8 @@ exports.createPages = async ({ graphql, actions }) => {
           component: path.resolve(`./src/templates/post-template.js`),
           context: {
             slug: edge.node.slug.current,
+            nextPost: edge.previous,
+            previousPost: edge.next,
           },
         })
       }
