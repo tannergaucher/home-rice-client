@@ -9,7 +9,7 @@ export default function CategoriesPage({ data }) {
     <Layout>
       <SEO title="Categories" />
       <div className="padding container">
-        <h1>Categories</h1>
+        <h1 style={{ textAlign: `center` }}>Categories</h1>
         <div style={{ marginTop: `var(--space-xl)` }}>
           {data.allSanityCategory.edges.map(
             edge =>

@@ -19,10 +19,11 @@ const Layout = ({ children }) => {
       >
         <Link to="/" style={{ textDecoration: `none` }}>
           <h2
-            className="title text--xxl"
+            className="title text--xxxl"
             style={{
               margin: `var(--space-xl) 0`,
               fontStyle: `italic`,
+              textAlign: `center`,
             }}
           >
             {title}
@@ -31,11 +32,16 @@ const Layout = ({ children }) => {
         <MenuBtn />
       </header>
       <main className="main">{children}</main>
-      <footer className="footer container padding">
+      <footer className="container padding">
+        <br />
         <Link to="/" style={{ textDecoration: `none` }}>
           <h2
-            className="title"
-            style={{ margin: `var(--space-xl) 0`, fontStyle: `italic` }}
+            className="title text--xxl"
+            style={{
+              margin: `var(--space-xl) 0`,
+              fontStyle: `italic`,
+              textAlign: `center`,
+            }}
           >
             {title}
           </h2>

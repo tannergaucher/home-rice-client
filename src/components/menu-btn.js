@@ -11,12 +11,17 @@ export default function MyMenuButton() {
         className="btn"
         style={{
           marginBottom: `0`,
+          width: `100%`,
         }}
       >
-        <span className="text--md">Menu</span> <span aria-hidden>▾</span>
+        <span className="text--md">Menu</span>
       </MenuButton>
 
-      <MenuList style={{ width: `45vmin` }}>
+      <MenuList
+        style={{
+          width: `calc(100vw - var(--space-xl) - var(--space-md) - var(--space-md) - var(--space-xl) )`,
+        }}
+      >
         <MenuLink as={Link} to="/">
           <span className="text--md">All Posts</span>
         </MenuLink>

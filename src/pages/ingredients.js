@@ -8,7 +8,7 @@ export default function IngredientsPage({ data }) {
     <Layout>
       <SEO title="Ingredients" />
       <div className="padding container">
-        <h1>Ingredients</h1>
+        <h1 style={{ textAlign: `center` }}>Ingredients</h1>
         <div
           className="content-grid"
           style={{ marginBlockStart: `var(--space-xl)` }}

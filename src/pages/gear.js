@@ -9,30 +9,27 @@ export default function GearPage({ data }) {
     <Layout>
       <SEO title="Gear" />
       <div className="padding container">
-        <h1>Gear</h1>
+        <h1 style={{ textAlign: `center` }}>Gear</h1>
         <div
           className="content-grid"
           style={{ marginBlockStart: `var(--space-xl)` }}
         >
-          {data.allSanityGear.edges.map(
-            edge =>
-              console.log(edge) || (
-                <a
-                  href={getAmazonAffiliateLink(edge.node.ASIN)}
-                  style={{ textDecoration: `none` }}
-                >
-                  <div className="card">
-                    <h3 className="card-heading">{edge.node.text}</h3>
-                    {edge.node.posts && (
-                      <p className="card-text">
-                        {edge.node.posts.length} Post
-                        {`${edge.node.posts.length > 1 ? `s` : ``}`}
-                      </p>
-                    )}
-                  </div>
-                </a>
-              )
-          )}
+          {data.allSanityGear.edges.map(edge => (
+            <a
+              href={getAmazonAffiliateLink(edge.node.ASIN)}
+              style={{ textDecoration: `none` }}
+            >
+              <div className="card">
+                <h3 className="card-heading">{edge.node.text}</h3>
+                {edge.node.posts && (
+                  <p className="card-text">
+                    {edge.node.posts.length} Post
+                    {`${edge.node.posts.length > 1 ? `s` : ``}`}
+                  </p>
+                )}
+              </div>
+            </a>
+          ))}
         </div>
       </div>
       <section className="padding" style={{ marginTop: `var(--space-xl)` }}>
