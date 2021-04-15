@@ -12,7 +12,8 @@ body {
   font-family: var(--serif);
 }
 
-.btn {
+.btn,
+.input {
   font-family: var(--serif);
 }
 

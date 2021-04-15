@@ -5,6 +5,7 @@ import SEO from "./seo"
 import MenuBtn from "./menu-btn"
 import IngredientsSearch from "./ingredients-search"
 import AffiliateLinkDisclaimer from "./affiliate-link-disclaimer"
+import EmailCaptureForm from "./email-capture-form"
 
 export {
   IngredientsForm,
@@ -14,4 +15,5 @@ export {
   MenuBtn,
   IngredientsSearch,
   AffiliateLinkDisclaimer,
+  EmailCaptureForm,
 }

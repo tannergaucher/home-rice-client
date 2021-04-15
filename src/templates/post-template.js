@@ -106,13 +106,15 @@ export default function PostTemplate({ data, pageContext }) {
           <AffiliateLinkDisclaimer />
         </section>
 
+        <hr className="hr container" />
+
         <section
           className="container"
           style={{
             display: `grid`,
             gridTemplateColumns: isMobile ? `` : `1fr 1fr`,
             gridTemplateRows: isMobile ? `1fr 1fr` : ``,
-            gap: `var(--space-md)`,
+            gap: isMobile ? `var(--space-md)` : `0 var(--space-md)`,
             marginTop: `var(--space-xl)`,
           }}
         >

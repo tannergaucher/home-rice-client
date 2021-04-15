@@ -6,7 +6,7 @@ import "semantic-styles"
 import "@semantic-styles/reach-ui"
 import "../index.css"
 
-import { MenuBtn } from "../components"
+import { MenuBtn, EmailCaptureForm } from "../components"
 
 const Layout = ({ children }) => {
   const { title, description } = useSiteMetadata()
@@ -40,7 +40,10 @@ const Layout = ({ children }) => {
       </header>
       <main className="main">{children}</main>
       <footer className="container padding">
-        <br />
+        <hr className="hr" />
+        <section style={{ marginBottom: `var(--space-xl)` }}>
+          <EmailCaptureForm />
+        </section>
         <Link to="/" style={{ textDecoration: `none` }}>
           <h2
             className="title text--xxl"
