@@ -17,7 +17,9 @@ export default function IngredientPageTemplate({ data }) {
               getAmazonAffiliateLink(data.sanityIngredient.ASIN)
             }
           >
-            <h1>{data.sanityIngredient.text}</h1>
+            <h1 style={{ textAlign: `center` }}>
+              {data.sanityIngredient.text}
+            </h1>
           </a>
         ) : (
           <h1>{data.sanityIngredient.text}</h1>

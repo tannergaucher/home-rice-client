@@ -4,7 +4,11 @@ import { Link } from "gatsby"
 import { Menu, MenuList, MenuButton, MenuLink } from "@reach/menu-button"
 import "@reach/menu-button/styles.css"
 
+import useIsMobile from "../hooks/use-is-mobile"
+
 export default function MyMenuButton() {
+  const isMobile = useIsMobile()
+
   return (
     <Menu>
       <MenuButton
@@ -19,7 +23,9 @@ export default function MyMenuButton() {
 
       <MenuList
         style={{
-          width: `calc(100vw - var(--space-xl) - var(--space-md) - var(--space-md) - var(--space-xl) )`,
+          width: isMobile
+            ? `calc(100vw - var(--space-lg))`
+            : `calc(100vw - var(--space-xl) - var(--space-xl) - var(--space-lg) )`,
         }}
       >
         <MenuLink as={Link} to="/">
