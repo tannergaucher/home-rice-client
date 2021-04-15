@@ -18,10 +18,7 @@ export default function PostTemplate({ data }) {
     <Layout>
       <SEO title={`${post.title}`} description={post.subtitle} />
       <div className="padding">
-        <article
-          className="page container card"
-          style={{ marginBlockStart: `0` }}
-        >
+        <div className="page container card" style={{ marginBlockStart: `0` }}>
           {post.youtubeVideoId ? (
             <div className="responsive-container">
               <iframe
@@ -93,13 +90,13 @@ export default function PostTemplate({ data }) {
             </IngredientsForm>
             <hr className="hr" />
             {post._rawBody && (
-              <>
+              <article>
                 <BlockContent blocks={post._rawBody} />
                 <hr className="hr" />
-              </>
+              </article>
             )}
           </div>
-        </article>
+        </div>
         <br />
         <AffiliateLinkDisclaimer />
       </div>

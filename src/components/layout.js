@@ -9,7 +9,7 @@ import "../index.css"
 import { MenuBtn } from "../components"
 
 const Layout = ({ children }) => {
-  const { title } = useSiteMetadata()
+  const { title, description } = useSiteMetadata()
 
   return (
     <div>
@@ -22,14 +22,21 @@ const Layout = ({ children }) => {
             className="title text--xxxl"
             style={{
               margin: `var(--space-xl) 0`,
+              marginBottom: `0`,
               fontStyle: `italic`,
               textAlign: `center`,
             }}
           >
             {title}
           </h2>
+
+          <h4 style={{ textAlign: `center`, marginBottom: `var(--space-xl)` }}>
+            {description}
+          </h4>
         </Link>
-        <MenuBtn />
+        <nav>
+          <MenuBtn />
+        </nav>
       </header>
       <main className="main">{children}</main>
       <footer className="container padding">
@@ -39,12 +46,19 @@ const Layout = ({ children }) => {
             className="title text--xxl"
             style={{
               margin: `var(--space-xl) 0`,
+              marginBottom: `0`,
               fontStyle: `italic`,
               textAlign: `center`,
             }}
           >
             {title}
           </h2>
+          <h4
+            className="text--sm"
+            style={{ textAlign: `center`, marginBottom: `var(--space-xl)` }}
+          >
+            {description}
+          </h4>
         </Link>
       </footer>
     </div>
