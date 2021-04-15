@@ -36,7 +36,10 @@ export default function IndexPage({ data }) {
 
 export const pageQuery = graphql`
   query {
-    allSanityPost(filter: { draft: { eq: false } }) {
+    allSanityPost(
+      filter: { draft: { eq: false } }
+      sort: { fields: publishedAt, order: DESC }
+    ) {
       edges {
         node {
           id
