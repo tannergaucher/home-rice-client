@@ -6,7 +6,7 @@ export default function EmailCaptureForm() {
       <br />
       <div className="container padding">
         <h3 className="text--xl" style={{ textAlign: `center` }}>
-          Get the latest inside rice, fresh to your inbox every month.
+          Get the freshest inside rice, delivered to your inbox every month.
         </h3>
         <form
           className="form"

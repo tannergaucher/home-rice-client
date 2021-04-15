@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
         </section>
         <Link to="/" style={{ textDecoration: `none` }}>
           <h2
-            className="title text--xxl"
+            className="title text--xxxl"
             style={{
               margin: `var(--space-xl) 0`,
               marginBottom: `0`,
@@ -56,10 +56,7 @@ const Layout = ({ children }) => {
           >
             {title}
           </h2>
-          <h4
-            className="text--sm"
-            style={{ textAlign: `center`, marginBottom: `var(--space-xl)` }}
-          >
+          <h4 style={{ textAlign: `center`, marginBottom: `var(--space-xl)` }}>
             {description}
           </h4>
         </Link>
