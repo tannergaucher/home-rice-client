@@ -5,23 +5,23 @@ export default function EmailCaptureForm() {
     <div className="card">
       <br />
       <div className="container padding">
-        <h3 className="text--xl">
+        <h3 className="text--xl" style={{ textAlign: `center` }}>
           Get the latest inside rice, fresh to your inbox every month.
         </h3>
         <form
           className="form"
-          action=""
-          name="capture-form"
+          name="email-capture"
           method="POST"
           data-netlify="true"
         >
           <input
-            type="text"
             className="input"
+            type="email"
             placeholder="Email"
             required="true"
-            name="email"
+            aria-label="Email"
           />
+          <input type="hidden" name="email-capture" placeholder="Email" />
           <button className="btn btn-primary" type="submit">
             Sign up
           </button>

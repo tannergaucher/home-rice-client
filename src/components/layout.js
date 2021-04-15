@@ -63,6 +63,9 @@ const Layout = ({ children }) => {
             {description}
           </h4>
         </Link>
+        <section style={{ marginBottom: `var(--space-xl)` }}>
+          <MenuBtn />
+        </section>
       </footer>
     </div>
   )
