@@ -1,5 +1,8 @@
-import { AWS_ASSOCIATE_ID } from "./constants"
+// bc used in gatsby-node
+const { AWS_ASSOCIATE_ID } = require("./constants")
 
-export default function getAmazonAffiliateLink(ASIN) {
-  return `https://www.amazon.com/gp/product/${ASIN}/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=${ASIN}&linkCode=as2&tag=${AWS_ASSOCIATE_ID}`
+function getAmazonAffiliateLink(ASIN) {
+  return `https://www.amazon.com/gp/product/${ASIN}/?tag=${AWS_ASSOCIATE_ID}`
 }
+
+module.exports = getAmazonAffiliateLink
