@@ -54,44 +54,50 @@ export default function PostTemplate({ data, pageContext }) {
             <h2 className="text--md" style={{ color: `var(--grey)` }}>
               {post.subtitle}
             </h2>
-            <IngredientsForm ingredients={post.ingredients}>
-              <h3>Ingredients</h3>
-              {post.ingredients.map((ingredient, i) => (
-                <IngredientsFormItem
-                  key={ingredient._id}
-                  ingredient={ingredient}
-                  order={i + 1}
-                />
-              ))}
-              {post.optionalIngredients &&
-                post.optionalIngredients.map((optionalIngredient, i) => (
-                  <IngredientsFormItem
-                    key={optionalIngredient._id}
-                    ingredient={optionalIngredient}
-                    order={post.ingredients.length + i + 1}
-                    optional
-                  />
-                ))}
-              {post.gear.length > 0 && (
-                <>
-                  <h3>Gear</h3>
-                  {post.gear.map((gearItem, i) => (
+
+            {post.ingredients.length > 0 && (
+              <>
+                <IngredientsForm ingredients={post.ingredients}>
+                  <h3>Ingredients</h3>
+                  {post.ingredients.map((ingredient, i) => (
                     <IngredientsFormItem
-                      key={gearItem._id}
-                      ingredient={gearItem}
-                      gearItem={gearItem}
-                      order={
-                        post.ingredients.length +
-                        post.optionalIngredients.length +
-                        i +
-                        1
-                      }
-                      gear
+                      key={ingredient._id}
+                      ingredient={ingredient}
+                      order={i + 1}
                     />
                   ))}
-                </>
-              )}
-            </IngredientsForm>
+                  {post.optionalIngredients &&
+                    post.optionalIngredients.map((optionalIngredient, i) => (
+                      <IngredientsFormItem
+                        key={optionalIngredient._id}
+                        ingredient={optionalIngredient}
+                        order={post.ingredients.length + i + 1}
+                        optional
+                      />
+                    ))}
+                  {post.gear.length > 0 && (
+                    <>
+                      <h3>Gear</h3>
+                      {post.gear.map((gearItem, i) => (
+                        <IngredientsFormItem
+                          key={gearItem._id}
+                          ingredient={gearItem}
+                          gearItem={gearItem}
+                          order={
+                            post.ingredients.length +
+                            post.optionalIngredients.length +
+                            i +
+                            1
+                          }
+                          gear
+                        />
+                      ))}
+                    </>
+                  )}
+                </IngredientsForm>
+              </>
+            )}
+
             <hr className="hr" />
             {post._rawBody && (
               <article>
