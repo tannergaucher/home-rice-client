@@ -59,3 +59,8 @@ div[data-reach-menu-list] {
 a[data-reach-menu-item][data-selected] {
   border-radius: var(--radius);
 }
+
+.figcaption {
+  margin-block-start: 0;
+  margin-block-end: var(--space-md);
+}

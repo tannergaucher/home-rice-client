@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
+import { getFluidGatsbyImage } from "gatsby-source-sanity"
 import BlockContent from "@sanity/block-content-to-react"
 
 import {
@@ -12,6 +13,40 @@ import {
 } from "../components"
 
 import useIsMobile from "../hooks/use-is-mobile"
+
+const sanityConfig = {
+  projectId: `q6bcj0lp`,
+  dataset: `production`,
+  graphqlTag: "default",
+}
+
+const serializers = {
+  types: {
+    postImage: ({ node }) => {
+      const imgData = getFluidGatsbyImage(
+        node.asset._ref,
+        { maxWidth: 1024 },
+        sanityConfig
+      )
+
+      console.log(`node`, node)
+
+      return (
+        <>
+          <figure className="figure">
+            <img
+              srcSet={imgData.srcSet}
+              sizes={imgData.sizes}
+              style={{ borderRadius: `0` }}
+            />
+            {/* TODO: if no caption, get date from image metadata */}
+            <figcaption className="figcaption">{node.Caption}</figcaption>
+          </figure>
+        </>
+      )
+    },
+  },
+}
 
 export default function PostTemplate({ data, pageContext }) {
   const post = data.sanityPost
@@ -101,7 +136,10 @@ export default function PostTemplate({ data, pageContext }) {
             <hr className="hr" />
             {post._rawBody && (
               <article>
-                <BlockContent blocks={post._rawBody} />
+                <BlockContent
+                  blocks={post._rawBody}
+                  serializers={serializers}
+                />
                 <hr className="hr" />
               </article>
             )}
