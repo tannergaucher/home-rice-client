@@ -29,7 +29,7 @@ export default function MyMenuButton() {
         }}
       >
         <MenuLink as={Link} to="/">
-          <span className="text--md">All Posts</span>
+          <span className="text--md">Home</span>
         </MenuLink>
         <MenuLink as={Link} to="/categories">
           <span className="text--md">Categories</span>

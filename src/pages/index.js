@@ -10,7 +10,7 @@ export default function IndexPage({ data }) {
 
   return (
     <Layout>
-      <SEO title="All Posts" description={description} />
+      <SEO title="Home" description={description} />
       <article>
         <div className="padding container content-grid">
           {data.allSanityPost.edges.map(edge => (
