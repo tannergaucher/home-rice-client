@@ -189,7 +189,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
       // View full post
       stream.write("\n")
-      stream.write(`VIEW FULL INGREDIENTS LIST`)
+      stream.write(`VIEW FULL POST`)
       stream.write("\n")
       stream.write(`https://homerice.app/${edge.node.slug.current}`)
 
