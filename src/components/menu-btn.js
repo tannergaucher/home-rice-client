@@ -25,7 +25,7 @@ export default function MyMenuButton() {
         style={{
           width: isMobile
             ? `calc(100vw - var(--space-lg))`
-            : `calc(100vw - var(--space-xl) - var(--space-xl) - var(--space-lg) )`,
+            : `calc(100vw - var(--space-xl) - var(--space-xl) - var(--space-lg))`,
         }}
       >
         <MenuLink as={Link} to="/">

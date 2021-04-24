@@ -29,8 +29,6 @@ const serializers = {
         sanityConfig
       )
 
-      console.log(`node`, node)
-
       return (
         <>
           <figure className="figure">
@@ -39,7 +37,6 @@ const serializers = {
               sizes={imgData.sizes}
               style={{ borderRadius: `0` }}
             />
-            {/* TODO: if no caption, get date from image metadata */}
             <figcaption className="figcaption">{node.Caption}</figcaption>
           </figure>
         </>
