@@ -13,6 +13,7 @@ export default function EmailCaptureForm() {
           name="email-capture"
           method="POST"
           data-netlify="true"
+          action="/thanks"
         >
           <input
             className="input"
@@ -20,8 +21,9 @@ export default function EmailCaptureForm() {
             placeholder="Email"
             required="true"
             aria-label="Email"
+            name="newsletter-subscriber"
           />
-          <input type="hidden" name="email-capture" placeholder="Email" />
+          <input type="hidden" name="form-name" value="email-capture" />
           <button className="btn btn-primary" type="submit">
             Sign up
           </button>
