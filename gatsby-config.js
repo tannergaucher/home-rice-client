@@ -21,6 +21,12 @@ module.exports = {
         graphqlTag: "default",
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "G-QSQCKTLV4Z",
+      },
+    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
