@@ -209,11 +209,11 @@ export default function PostTemplate({ data, pageContext }) {
             >
               {post.ingredients.map(ingredient =>
                 ingredient.slug ? (
-                  <Link to={`/ingredients/${ingredient.slug.current}`}>
+                  <Link
+                    to={`/ingredients/${ingredient.slug.current}`}
+                    style={{ textDecoration: `none` }}
+                  >
                     <div className="card" key={ingredient.text}>
-                      {ingredient.image && (
-                        <Img fluid={ingredient.image.asset.fluid} />
-                      )}
                       <h3 className="card-heading">{ingredient.text}</h3>
                     </div>
                   </Link>
@@ -247,13 +247,6 @@ export const pageQuery = graphql`
         ASIN
         slug {
           current
-        }
-        image {
-          asset {
-            fluid {
-              ...GatsbySanityImageFluid
-            }
-          }
         }
       }
       optionalIngredients {

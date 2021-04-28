@@ -6,6 +6,7 @@
   --accent-2-light: tomato;
   --accent-1-dark: white;
   --accent-2-dark: tomato;
+  --thickness: 0.67vmin;
 }
 
 body {
@@ -63,4 +64,8 @@ a[data-reach-menu-item][data-selected] {
 .figcaption {
   margin-block-start: 0;
   margin-block-end: var(--space-md);
+}
+
+.hr {
+  border: calc(var(--thickness) / 2) solid var(--accent-1);
 }
