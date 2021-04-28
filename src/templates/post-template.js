@@ -147,51 +147,81 @@ export default function PostTemplate({ data, pageContext }) {
           <AffiliateLinkDisclaimer />
         </section>
 
-        <hr className="hr container" />
-
-        <section
-          className="container"
-          style={{
-            display: `grid`,
-            gridTemplateColumns: isMobile ? `` : `1fr 1fr`,
-            gridTemplateRows: isMobile ? `1fr 1fr` : ``,
-            gap: isMobile ? `var(--space-md)` : `0 var(--space-md)`,
-            marginTop: `var(--space-xl)`,
-          }}
-        >
-          {pageContext.nextPost && (
-            <Link
-              to={`/${pageContext.nextPost.slug.current}`}
-              style={{ textDecoration: `none` }}
-            >
-              <div className="card">
-                <img
-                  srcSet={pageContext.nextPost.mainImage.asset.fluid.srcSet}
-                  sizes={pageContext.nextPost.mainImage.asset.fluid.sizes}
-                  alt=""
-                />
-                <h4 className="card-heading">Next:</h4>
-                <h4 className="card-text ">{pageContext.nextPost.title}</h4>
-              </div>
-            </Link>
-          )}
-          {pageContext.previousPost && (
-            <Link
-              to={`/${pageContext.previousPost.slug.current}`}
-              style={{ textDecoration: `none` }}
-            >
-              <div className="card">
-                <img
-                  srcSet={pageContext.previousPost.mainImage.asset.fluid.srcSet}
-                  sizes={pageContext.previousPost.mainImage.asset.fluid.sizes}
-                  alt=""
-                />
-                <h4 className="card-heading">Previous:</h4>
-                <h4 className="card-text">{pageContext.previousPost.title}</h4>
-              </div>
-            </Link>
-          )}
+        <section className="container">
+          <hr className="hr" />
+          <h3>Posts</h3>
+          <div
+            style={{
+              display: `grid`,
+              gap: `0 var(--space-md)`,
+              gridTemplateColumns: `1fr 1fr`,
+              marginTop: `var(--space-xl)`,
+            }}
+          >
+            {pageContext.nextPost && (
+              <Link
+                to={`/${pageContext.nextPost.slug.current}`}
+                style={{ textDecoration: `none` }}
+              >
+                <div className="card">
+                  <img
+                    srcSet={pageContext.nextPost.mainImage.asset.fluid.srcSet}
+                    sizes={pageContext.nextPost.mainImage.asset.fluid.sizes}
+                    alt=""
+                  />
+                  <h4 className="card-heading">Next:</h4>
+                  <h4 className="card-text ">{pageContext.nextPost.title}</h4>
+                </div>
+              </Link>
+            )}
+            {pageContext.previousPost && (
+              <Link
+                to={`/${pageContext.previousPost.slug.current}`}
+                style={{ textDecoration: `none` }}
+              >
+                <div className="card">
+                  <img
+                    srcSet={
+                      pageContext.previousPost.mainImage.asset.fluid.srcSet
+                    }
+                    sizes={pageContext.previousPost.mainImage.asset.fluid.sizes}
+                    alt=""
+                  />
+                  <h4 className="card-heading">Previous:</h4>
+                  <h4 className="card-text">
+                    {pageContext.previousPost.title}
+                  </h4>
+                </div>
+              </Link>
+            )}
+          </div>
         </section>
+
+        {post.ingredients.length > 0 && (
+          <section>
+            <div className="container">
+              <hr className="hr" />
+              <h3>Ingredients</h3>
+            </div>
+            <div
+              className="container content-grid"
+              style={{ marginTop: `var(--space-xl)` }}
+            >
+              {post.ingredients.map(ingredient =>
+                ingredient.slug ? (
+                  <Link to={`/ingredients/${ingredient.slug.current}`}>
+                    <div className="card" key={ingredient.text}>
+                      {ingredient.image && (
+                        <Img fluid={ingredient.image.asset.fluid} />
+                      )}
+                      <h3 className="card-heading">{ingredient.text}</h3>
+                    </div>
+                  </Link>
+                ) : null
+              )}
+            </div>
+          </section>
+        )}
       </div>
     </Layout>
   )
@@ -215,6 +245,16 @@ export const pageQuery = graphql`
         _id
         text
         ASIN
+        slug {
+          current
+        }
+        image {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
       }
       optionalIngredients {
         _id
