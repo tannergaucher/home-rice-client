@@ -149,7 +149,7 @@ export default function PostTemplate({ data, pageContext }) {
 
         <section className="container">
           <hr className="hr" />
-          <h3>Posts</h3>
+          <h3 className="text--xl">Posts</h3>
           <div
             style={{
               display: `grid`,
@@ -201,7 +201,7 @@ export default function PostTemplate({ data, pageContext }) {
           <section>
             <div className="container">
               <hr className="hr" />
-              <h3>Ingredients</h3>
+              <h3 className="text--xl">Ingredients</h3>
             </div>
             <div
               className="container content-grid"

@@ -44,6 +44,7 @@ const Layout = ({ children }) => {
         <section style={{ marginBottom: `var(--space-xl)` }}>
           <EmailCaptureForm />
         </section>
+        <hr className="hr" />
         <Link to="/" style={{ textDecoration: `none` }}>
           <h2
             className="title text--xxxl"
