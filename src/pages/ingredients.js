@@ -23,7 +23,7 @@ export default function IngredientsPage({ data }) {
                   style={{ textDecoration: `none` }}
                 >
                   <div className="card">
-                    {edge.node.image && (
+                    {edge.node.image !== null && edge.node.image.asset && (
                       <Img fluid={edge.node.image.asset.fluid} />
                     )}
                     <h3 className="card-heading">{edge.node.text}</h3>

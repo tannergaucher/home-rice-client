@@ -12,8 +12,6 @@ import {
   AffiliateLinkDisclaimer,
 } from "../components"
 
-import useIsMobile from "../hooks/use-is-mobile"
-
 const sanityConfig = {
   projectId: `q6bcj0lp`,
   dataset: `production`,
@@ -30,16 +28,19 @@ const serializers = {
       )
 
       return (
-        <>
-          <figure className="figure">
-            <img
-              srcSet={imgData.srcSet}
-              sizes={imgData.sizes}
-              style={{ borderRadius: `0` }}
-            />
-            <figcaption className="figcaption">{node.Caption}</figcaption>
-          </figure>
-        </>
+        <figure className="figure" style={{ marginBottom: `var(--space-lg)` }}>
+          <img
+            srcSet={imgData.srcSet}
+            sizes={imgData.sizes}
+            style={{ borderRadius: `0`, width: `100%` }}
+          />
+          <figcaption
+            className="figcaption text--sm"
+            style={{ fontStyle: `italic` }}
+          >
+            {node.caption}
+          </figcaption>
+        </figure>
       )
     },
   },
@@ -47,8 +48,6 @@ const serializers = {
 
 export default function PostTemplate({ data, pageContext }) {
   const post = data.sanityPost
-
-  const isMobile = useIsMobile()
 
   return (
     <Layout>
