@@ -1,14 +1,14 @@
 import React from "react"
 import { Link } from "gatsby"
-import useSiteMetadata from "../hooks/use-site-metadata"
-
 import "semantic-styles"
 import "@semantic-styles/reach-ui"
+
 import "../index.css"
 
+import useSiteMetadata from "../hooks/use-site-metadata"
 import { MenuBtn, EmailCaptureForm } from "../components"
 
-const Layout = ({ children }) => {
+export default function Layout({ children }) {
   const { title, description } = useSiteMetadata()
 
   return (
@@ -68,5 +68,3 @@ const Layout = ({ children }) => {
     </div>
   )
 }
-
-export default Layout
