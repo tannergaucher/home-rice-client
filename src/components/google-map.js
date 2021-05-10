@@ -7,7 +7,7 @@ export default function GoogleMapEmbed({ placeName, style }) {
       allowFullScreen
       style={style}
       title={placeName}
-      src={`https://www.google.com/maps/embed/v1/place?q=${placeName}&key=AIzaSyBXMP0gGJi18AbqJSDvfU6Bxi3vAbrPqgw`}
+      src={`https://www.google.com/maps/embed/v1/place?q=${placeName}&key=${process.env.GATSBY_GOOGLE_API_KEY}`}
     ></iframe>
   )
 }
