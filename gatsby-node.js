@@ -130,6 +130,9 @@ exports.createPages = async ({ graphql, actions }) => {
               text
               ASIN
             }
+            places {
+              id
+            }
             slug {
               current
             }
@@ -153,7 +156,7 @@ exports.createPages = async ({ graphql, actions }) => {
       createYTDescription(edge)
     }
 
-    if (process.env.NODE_ENV === "development") {
+    if (edge.node.draft === false && !edge.node.places.length) {
       createPage({
         path: `/${edge.node.slug.current}`,
         component: path.resolve(`./src/templates/post-template.js`),
@@ -165,18 +168,16 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     }
 
-    if (process.env.NODE_ENV === "production") {
-      if (edge.node.draft === false) {
-        createPage({
-          path: `/${edge.node.slug.current}`,
-          component: path.resolve(`./src/templates/post-template.js`),
-          context: {
-            slug: edge.node.slug.current,
-            nextPost: edge.previous,
-            previousPost: edge.next,
-          },
-        })
-      }
+    if (edge.node.draft === false && edge.node.places.length) {
+      createPage({
+        path: `/${edge.node.slug.current}`,
+        component: path.resolve(`./src/templates/post-with-places.js`),
+        context: {
+          slug: edge.node.slug.current,
+          nextPost: edge.previous,
+          previousPost: edge.next,
+        },
+      })
     }
   })
 
@@ -207,8 +208,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   ingredients.forEach(edge => {
     if (edge.node.slug) {
-      // make short link
-
       createPage({
         path: `/ingredients/${edge.node.slug.current}`,
         component: path.resolve(`./src/templates/ingredient-template.js`),

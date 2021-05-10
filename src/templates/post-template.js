@@ -1,8 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import { getFluidGatsbyImage } from "gatsby-source-sanity"
-import BlockContent from "@sanity/block-content-to-react"
 
 import {
   SEO,
@@ -10,42 +8,8 @@ import {
   IngredientsForm,
   IngredientsFormItem,
   AffiliateLinkDisclaimer,
-  GoogleMap,
+  BlockContent,
 } from "../components"
-
-const sanityConfig = {
-  projectId: `q6bcj0lp`,
-  dataset: `production`,
-  graphqlTag: "default",
-}
-
-const serializers = {
-  types: {
-    postImage: ({ node }) => {
-      const imgData = getFluidGatsbyImage(
-        node.asset._ref,
-        { maxWidth: 1024 },
-        sanityConfig
-      )
-
-      return (
-        <figure className="figure" style={{ marginBottom: `var(--space-lg)` }}>
-          <img
-            srcSet={imgData.srcSet}
-            sizes={imgData.sizes}
-            style={{ borderRadius: `0`, width: `100%` }}
-          />
-          <figcaption
-            className="figcaption text--sm"
-            style={{ fontStyle: `italic` }}
-          >
-            {node.caption}
-          </figcaption>
-        </figure>
-      )
-    },
-  },
-}
 
 export default function PostTemplate({ data, pageContext }) {
   const post = data.sanityPost
@@ -129,24 +93,18 @@ export default function PostTemplate({ data, pageContext }) {
                 </IngredientsForm>
               </>
             )}
-
             <hr className="hr" />
             {post._rawBody && (
               <article>
-                <BlockContent
-                  blocks={post._rawBody}
-                  serializers={serializers}
-                />
+                <BlockContent blocks={post._rawBody} />
                 <hr className="hr" />
               </article>
             )}
           </div>
         </div>
-
         <section style={{ marginTop: `var(--space-xl)` }}>
           <AffiliateLinkDisclaimer />
         </section>
-
         <section className="container">
           <hr className="hr" />
           <h3 className="text--xl">Posts</h3>
@@ -229,39 +187,7 @@ export default function PostTemplate({ data, pageContext }) {
 export const pageQuery = graphql`
   query($slug: String!) {
     sanityPost(slug: { current: { eq: $slug } }) {
-      title
-      subtitle
-      _rawBody
-      youtubeVideoId
-      mainImage {
-        asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      ingredients {
-        _id
-        text
-        ASIN
-        slug {
-          current
-        }
-      }
-      optionalIngredients {
-        _id
-        text
-        ASIN
-      }
-      places {
-        _id
-      }
-      gear {
-        _id
-        text
-        ASIN
-        externalHref
-      }
+      ...PostFragment
     }
   }
 `
