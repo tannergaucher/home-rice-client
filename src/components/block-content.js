@@ -13,7 +13,7 @@ const serializers = {
     postImage: ({ node }) => {
       const imgData = getFluidGatsbyImage(
         node.asset._ref,
-        { maxWidth: 1024 },
+        { maxWidth: 1200 },
         sanityConfig
       )
       return (

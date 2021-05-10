@@ -18,7 +18,7 @@ export const POST_FRAGMENT = graphql`
     youtubeVideoId
     mainImage {
       asset {
-        fluid {
+        fluid(maxWidth: 1200) {
           ...GatsbySanityImageFluid
         }
       }
@@ -37,7 +37,9 @@ export const POST_FRAGMENT = graphql`
       ASIN
     }
     places {
-      _id
+      id
+      name
+      googleMapsPlaceName
     }
     gear {
       _id

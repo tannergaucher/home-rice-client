@@ -7,6 +7,8 @@ import AffiliateLinkDisclaimer from "./affiliate-link-disclaimer"
 import EmailCaptureForm from "./email-capture-form"
 import GoogleMap from "./google-map"
 import BlockContent from "./block-content"
+import YoutubeEmbedPlayer from "./youtube-embed-player"
+import NextPreviousPostLinks from "./next-previous-post-links"
 
 export {
   IngredientsForm,
@@ -18,4 +20,6 @@ export {
   EmailCaptureForm,
   GoogleMap,
   BlockContent,
+  YoutubeEmbedPlayer,
+  NextPreviousPostLinks,
 }

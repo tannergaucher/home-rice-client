@@ -168,10 +168,10 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     }
 
-    if (edge.node.draft === false && edge.node.places.length) {
+    if (edge.node.draft === false && edge.node.places.length === 1) {
       createPage({
         path: `/${edge.node.slug.current}`,
-        component: path.resolve(`./src/templates/post-with-places.js`),
+        component: path.resolve(`./src/templates/post-with-place.js`),
         context: {
           slug: edge.node.slug.current,
           nextPost: edge.previous,

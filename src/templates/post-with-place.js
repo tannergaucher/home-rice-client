@@ -1,14 +1,23 @@
 import React from "react"
 import Img from "gatsby-image"
 
-import { Layout, GoogleMap, BlockContent } from "../components"
+import {
+  Layout,
+  GoogleMap,
+  BlockContent,
+  YoutubeEmbedPlayer,
+  NextPreviousPostLinks,
+  SEO,
+} from "../components"
 
-export default function PostWithPlaces({ data, pageContext }) {
-  console.log(data)
-  console.log(`pageContext`, pageContext)
+import useIsMobile from "../hooks/use-is-mobile"
+
+export default function PostWithPlace({ data, pageContext }) {
+  const isMobile = useIsMobile()
 
   return (
     <Layout>
+      <SEO title={data.sanityPost.title} />
       <div className="container padding">
         <Img fluid={data.sanityPost.mainImage.asset.fluid} />
         <br />
@@ -25,9 +34,12 @@ export default function PostWithPlaces({ data, pageContext }) {
         <div className="aside-content-grid">
           <aside className="aside" style={{ marginTop: `var(--space-md)` }}>
             <GoogleMap
+              placeName={data.sanityPost.places[0].googleMapsPlaceName}
               style={{
-                height: `calc(100% - var(--space-lg))`,
+                width: isMobile ? `100%` : `25vw`,
+                height: isMobile ? `50vh` : `calc(100vh - var(--space-lg))`,
                 marginRight: `var(--space-lg)`,
+                border: `none`,
               }}
             />
           </aside>
@@ -35,6 +47,19 @@ export default function PostWithPlaces({ data, pageContext }) {
             <BlockContent blocks={data.sanityPost._rawBody} />
           </div>
         </div>
+        <br />
+        <YoutubeEmbedPlayer
+          title={data.sanityPost.title}
+          youtubeVideoId={data.sanityPost.youtubeVideoId}
+          style={{
+            marginBlockStart: `var(--space-lg)`,
+          }}
+        />
+        <hr className="hr" />
+        <NextPreviousPostLinks
+          nextPost={pageContext.nextPost}
+          previousPost={pageContext.previousPost}
+        />
       </div>
     </Layout>
   )
