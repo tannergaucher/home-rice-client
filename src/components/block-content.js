@@ -16,7 +16,6 @@ const serializers = {
         { maxWidth: 1024 },
         sanityConfig
       )
-
       return (
         <figure className="figure" style={{ marginBottom: `var(--space-lg)` }}>
           <img

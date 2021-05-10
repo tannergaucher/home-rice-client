@@ -1,8 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
-import BlockContent from "@sanity/block-content-to-react"
 
-import { Layout, GoogleMap } from "../components"
+import { Layout, GoogleMap, BlockContent } from "../components"
 
 export default function PostWithPlaces({ data, pageContext }) {
   console.log(data)
@@ -16,12 +15,13 @@ export default function PostWithPlaces({ data, pageContext }) {
         <h1 className="text--xxxl" style={{ textAlign: `center` }}>
           {data.sanityPost.title}
         </h1>
-        <h2 className="text--md" style={{ textAlign: `center` }}>
+        <h2
+          className="text--md"
+          style={{ textAlign: `center`, marginBlockStart: `0` }}
+        >
           {data.sanityPost.subtitle}
         </h2>
-
         <br />
-
         <div className="aside-content-grid">
           <aside className="aside" style={{ marginTop: `var(--space-md)` }}>
             <GoogleMap
