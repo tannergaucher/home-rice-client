@@ -10,6 +10,7 @@ import {
   IngredientsForm,
   IngredientsFormItem,
   AffiliateLinkDisclaimer,
+  GoogleMap,
 } from "../components"
 
 const sanityConfig = {
@@ -52,8 +53,8 @@ export default function PostTemplate({ data, pageContext }) {
   return (
     <Layout>
       <SEO title={`${post.title}`} description={post.subtitle} />
-      <div className="padding">
-        <div className="page container card" style={{ marginBlockStart: `0` }}>
+      <div className="container padding">
+        <div className="card" style={{ marginBlockStart: `0` }}>
           {post.youtubeVideoId ? (
             <div className="responsive-container">
               <iframe
@@ -195,7 +196,6 @@ export default function PostTemplate({ data, pageContext }) {
             )}
           </div>
         </section>
-
         {post.ingredients.length > 0 && (
           <section>
             <div className="container">
@@ -252,6 +252,9 @@ export const pageQuery = graphql`
         _id
         text
         ASIN
+      }
+      places {
+        _id
       }
       gear {
         _id
