@@ -4,6 +4,10 @@ const fs = require("fs")
 const { YT_DESCRIPTIONS_DIRNAME } = require("./src/utils/constants")
 const createYTDescription = require("./src/utils/create-yt-description")
 
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  // const { createNodeField } = actions
+}
+
 exports.createResolvers = ({ createResolvers }) => {
   const resolvers = {
     SanityCategory: {
@@ -144,14 +148,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = allPosts.data.allSanityPost.edges
 
-  // create YT video dir
   fs.mkdir(path.join(__dirname, YT_DESCRIPTIONS_DIRNAME), err => {
     console.log(`err`, err)
   })
 
   posts.forEach(edge => {
-    // Create YT video descriptions
-
     if (edge.node.youtubeVideoId) {
       createYTDescription(edge)
     }

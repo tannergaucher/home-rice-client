@@ -69,3 +69,12 @@ a[data-reach-menu-item][data-selected] {
 .hr {
   border: calc(var(--thickness) / 2) solid var(--accent-1);
 }
+
+.brand-text-shadow {
+  text-shadow: 0.25vmin 0.25vmin tomato;
+}
+
+.brand-text-shadow:hover,
+.brand-text-shadow:focus {
+  text-shadow: 0.15vmin 0.15vmin var(--grey);
+}

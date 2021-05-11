@@ -19,6 +19,7 @@ module.exports = {
         projectId: `q6bcj0lp`,
         dataset: `production`,
         graphqlTag: "default",
+        overlayDrafts: true,
       },
     },
     {
