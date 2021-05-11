@@ -17,7 +17,11 @@ export default function Layout({ children }) {
         className="container padding"
         style={{ marginBlockEnd: `var(--space-xl)` }}
       >
-        <Link to="/" style={{ textDecoration: `none` }}>
+        <Link
+          className="brand-text-shadow"
+          to="/"
+          style={{ textDecoration: `none` }}
+        >
           <h2
             className="title text--xxxl"
             style={{
@@ -30,7 +34,13 @@ export default function Layout({ children }) {
             {title}
           </h2>
 
-          <h4 style={{ textAlign: `center`, marginBottom: `var(--space-xl)` }}>
+          <h4
+            style={{
+              textAlign: `center`,
+              marginBottom: `var(--space-xl)`,
+              textShadow: `none`,
+            }}
+          >
             {description}
           </h4>
         </Link>
@@ -45,7 +55,11 @@ export default function Layout({ children }) {
           <EmailCaptureForm />
         </section>
         <hr className="hr" />
-        <Link to="/" style={{ textDecoration: `none` }}>
+        <Link
+          className="brand-text-shadow"
+          to="/"
+          style={{ textDecoration: `none` }}
+        >
           <h2
             className="title text--xxxl"
             style={{
@@ -57,7 +71,13 @@ export default function Layout({ children }) {
           >
             {title}
           </h2>
-          <h4 style={{ textAlign: `center`, marginBottom: `var(--space-xl)` }}>
+          <h4
+            style={{
+              textAlign: `center`,
+              marginBottom: `var(--space-xl)`,
+              textShadow: `none`,
+            }}
+          >
             {description}
           </h4>
         </Link>

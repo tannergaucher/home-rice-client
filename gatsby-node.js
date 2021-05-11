@@ -4,6 +4,10 @@ const fs = require("fs")
 const { YT_DESCRIPTIONS_DIRNAME } = require("./src/utils/constants")
 const createYTDescription = require("./src/utils/create-yt-description")
 
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  // const { createNodeField } = actions
+}
+
 exports.createResolvers = ({ createResolvers }) => {
   const resolvers = {
     SanityCategory: {
@@ -130,6 +134,9 @@ exports.createPages = async ({ graphql, actions }) => {
               text
               ASIN
             }
+            places {
+              id
+            }
             slug {
               current
             }
@@ -141,19 +148,16 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = allPosts.data.allSanityPost.edges
 
-  // create YT video dir
   fs.mkdir(path.join(__dirname, YT_DESCRIPTIONS_DIRNAME), err => {
     console.log(`err`, err)
   })
 
   posts.forEach(edge => {
-    // Create YT video descriptions
-
     if (edge.node.youtubeVideoId) {
       createYTDescription(edge)
     }
 
-    if (process.env.NODE_ENV === "development") {
+    if (edge.node.draft === false && !edge.node.places.length) {
       createPage({
         path: `/${edge.node.slug.current}`,
         component: path.resolve(`./src/templates/post-template.js`),
@@ -165,18 +169,16 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     }
 
-    if (process.env.NODE_ENV === "production") {
-      if (edge.node.draft === false) {
-        createPage({
-          path: `/${edge.node.slug.current}`,
-          component: path.resolve(`./src/templates/post-template.js`),
-          context: {
-            slug: edge.node.slug.current,
-            nextPost: edge.previous,
-            previousPost: edge.next,
-          },
-        })
-      }
+    if (edge.node.draft === false && edge.node.places.length === 1) {
+      createPage({
+        path: `/${edge.node.slug.current}`,
+        component: path.resolve(`./src/templates/post-with-place.js`),
+        context: {
+          slug: edge.node.slug.current,
+          nextPost: edge.previous,
+          previousPost: edge.next,
+        },
+      })
     }
   })
 
@@ -207,8 +209,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   ingredients.forEach(edge => {
     if (edge.node.slug) {
-      // make short link
-
       createPage({
         path: `/ingredients/${edge.node.slug.current}`,
         component: path.resolve(`./src/templates/ingredient-template.js`),

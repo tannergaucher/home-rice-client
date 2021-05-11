@@ -4,7 +4,7 @@ export default function AffiliateLinkDisclaimer() {
   return (
     <>
       <blockquote
-        className="blockquote  container"
+        className="blockquote"
         style={{ padding: `0` }}
         cite="https://affiliate-program.amazon.com/"
       >

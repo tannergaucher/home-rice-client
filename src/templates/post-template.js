@@ -1,8 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import { getFluidGatsbyImage } from "gatsby-source-sanity"
-import BlockContent from "@sanity/block-content-to-react"
 
 import {
   SEO,
@@ -10,41 +8,10 @@ import {
   IngredientsForm,
   IngredientsFormItem,
   AffiliateLinkDisclaimer,
+  BlockContent,
+  YoutubeEmbedPlayer,
+  NextPreviousPostLinks,
 } from "../components"
-
-const sanityConfig = {
-  projectId: `q6bcj0lp`,
-  dataset: `production`,
-  graphqlTag: "default",
-}
-
-const serializers = {
-  types: {
-    postImage: ({ node }) => {
-      const imgData = getFluidGatsbyImage(
-        node.asset._ref,
-        { maxWidth: 1024 },
-        sanityConfig
-      )
-
-      return (
-        <figure className="figure" style={{ marginBottom: `var(--space-lg)` }}>
-          <img
-            srcSet={imgData.srcSet}
-            sizes={imgData.sizes}
-            style={{ borderRadius: `0`, width: `100%` }}
-          />
-          <figcaption
-            className="figcaption text--sm"
-            style={{ fontStyle: `italic` }}
-          >
-            {node.caption}
-          </figcaption>
-        </figure>
-      )
-    },
-  },
-}
 
 export default function PostTemplate({ data, pageContext }) {
   const post = data.sanityPost
@@ -52,30 +19,19 @@ export default function PostTemplate({ data, pageContext }) {
   return (
     <Layout>
       <SEO title={`${post.title}`} description={post.subtitle} />
-      <div className="padding">
-        <div className="page container card" style={{ marginBlockStart: `0` }}>
+      <div className="container padding">
+        <div className="card" style={{ marginBlockStart: `0` }}>
           {post.youtubeVideoId ? (
-            <div className="responsive-container">
-              <iframe
-                title={post.title}
-                className="responsive-iframe"
-                id="player"
-                type="text/html"
-                src={`https://www.youtube.com/embed/${post.youtubeVideoId}?enablejsapi=1&origin=https://homerice.app&cc_load_policy=0&autoplay=1&rel=0`}
-                frameBorder="0"
-                allowFullScreen={true}
-                style={{
-                  borderTopLeftRadius: `var(--radius)`,
-                  borderTopRightRadius: `var(--radius)`,
-                }}
-              ></iframe>
-            </div>
+            <YoutubeEmbedPlayer
+              title={post.title}
+              youtubeVideoId={post.youtubeVideoId}
+              style={{
+                borderTopLeftRadius: `var(--radius)`,
+                borderTopRightRadius: `var(--radius)`,
+              }}
+            />
           ) : (
-            <>
-              {post.mainImage.asset && post.mainImage.asset.fluid && (
-                <Img fluid={post.mainImage.asset.fluid} />
-              )}
-            </>
+            <Img fluid={post.mainImage.asset.fluid} />
           )}
           <br />
           <div className="container only-mobile-padding">
@@ -128,82 +84,33 @@ export default function PostTemplate({ data, pageContext }) {
                 </IngredientsForm>
               </>
             )}
-
             <hr className="hr" />
             {post._rawBody && (
               <article>
-                <BlockContent
-                  blocks={post._rawBody}
-                  serializers={serializers}
-                />
+                <BlockContent blocks={post._rawBody} />
                 <hr className="hr" />
               </article>
             )}
           </div>
         </div>
-
         <section style={{ marginTop: `var(--space-xl)` }}>
           <AffiliateLinkDisclaimer />
         </section>
-
-        <section className="container">
+        <section className="">
           <hr className="hr" />
-          <h3 className="text--xl">Posts</h3>
-          <div
-            style={{
-              display: `grid`,
-              gap: `0 var(--space-md)`,
-              gridTemplateColumns: `1fr 1fr`,
-              marginTop: `var(--space-xl)`,
-            }}
-          >
-            {pageContext.nextPost && (
-              <Link
-                to={`/${pageContext.nextPost.slug.current}`}
-                style={{ textDecoration: `none` }}
-              >
-                <div className="card">
-                  <img
-                    srcSet={pageContext.nextPost.mainImage.asset.fluid.srcSet}
-                    sizes={pageContext.nextPost.mainImage.asset.fluid.sizes}
-                    alt=""
-                  />
-                  <h4 className="card-heading">Next:</h4>
-                  <h4 className="card-text ">{pageContext.nextPost.title}</h4>
-                </div>
-              </Link>
-            )}
-            {pageContext.previousPost && (
-              <Link
-                to={`/${pageContext.previousPost.slug.current}`}
-                style={{ textDecoration: `none` }}
-              >
-                <div className="card">
-                  <img
-                    srcSet={
-                      pageContext.previousPost.mainImage.asset.fluid.srcSet
-                    }
-                    sizes={pageContext.previousPost.mainImage.asset.fluid.sizes}
-                    alt=""
-                  />
-                  <h4 className="card-heading">Previous:</h4>
-                  <h4 className="card-text">
-                    {pageContext.previousPost.title}
-                  </h4>
-                </div>
-              </Link>
-            )}
-          </div>
+          <NextPreviousPostLinks
+            nextPost={pageContext.nextPost}
+            previousPost={pageContext.previousPost}
+          />
         </section>
-
         {post.ingredients.length > 0 && (
           <section>
-            <div className="container">
+            <div>
               <hr className="hr" />
-              <h3 className="text--xl">Ingredients</h3>
+              <h3 className="text--xl">Post Ingredients</h3>
             </div>
             <div
-              className="container content-grid"
+              className="content-grid"
               style={{ marginTop: `var(--space-xl)` }}
             >
               {post.ingredients.map(ingredient =>
@@ -229,36 +136,7 @@ export default function PostTemplate({ data, pageContext }) {
 export const pageQuery = graphql`
   query($slug: String!) {
     sanityPost(slug: { current: { eq: $slug } }) {
-      title
-      subtitle
-      _rawBody
-      youtubeVideoId
-      mainImage {
-        asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      ingredients {
-        _id
-        text
-        ASIN
-        slug {
-          current
-        }
-      }
-      optionalIngredients {
-        _id
-        text
-        ASIN
-      }
-      gear {
-        _id
-        text
-        ASIN
-        externalHref
-      }
+      ...PostFragment
     }
   }
 `
