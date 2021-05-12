@@ -27,6 +27,13 @@ export const POST_FRAGMENT = graphql`
       _id
       text
       ASIN
+      image {
+        asset {
+          fluid(maxWidth: 1200) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
       slug {
         current
       }
