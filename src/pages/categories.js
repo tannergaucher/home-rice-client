@@ -2,7 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-import { Layout, SEO } from "../components"
+import { Layout, SEO, ContentCard } from "../components"
 
 export default function CategoriesPage({ data }) {
   return (
@@ -20,18 +20,18 @@ export default function CategoriesPage({ data }) {
                   <div className="content-grid">
                     {edge.node.posts &&
                       edge.node.posts.map(post => (
-                        <div className="card">
-                          <Link
-                            style={{ textDecoration: `none` }}
-                            to={`/${post.slug.current}`}
-                          >
-                            {post.mainImage.asset && (
-                              <Img fluid={post.mainImage.asset.fluid} />
-                            )}
-                            <h4 className="card-heading">{post.title}</h4>
-                            <p className="card-text">{post.subtitle}</p>
-                          </Link>
-                        </div>
+                        <Link
+                          style={{ textDecoration: `none` }}
+                          to={`/${post.slug.current}`}
+                        >
+                          <ContentCard
+                            heading={post.title}
+                            text={post.subtitle}
+                            fluid={
+                              post.mainImage.asset && post.mainImage.asset.fluid
+                            }
+                          />
+                        </Link>
                       ))}
                   </div>
                 </details>
