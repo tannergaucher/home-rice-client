@@ -11,6 +11,7 @@ import {
   BlockContent,
   YoutubeEmbedPlayer,
   NextPreviousPostLinks,
+  ContentCard,
 } from "../components"
 
 export default function PostTemplate({ data, pageContext }) {
@@ -20,7 +21,7 @@ export default function PostTemplate({ data, pageContext }) {
     <Layout>
       <SEO title={`${post.title}`} description={post.subtitle} />
       <div className="container padding">
-        <div className="card" style={{ marginBlockStart: `0` }}>
+        <article className="card" style={{ marginBlockStart: `0` }}>
           {post.youtubeVideoId ? (
             <YoutubeEmbedPlayer
               title={post.title}
@@ -41,7 +42,6 @@ export default function PostTemplate({ data, pageContext }) {
             <h2 className="text--md" style={{ color: `var(--grey)` }}>
               {post.subtitle}
             </h2>
-
             {post.ingredients.length > 0 && (
               <>
                 <IngredientsForm ingredients={post.ingredients}>
@@ -86,29 +86,30 @@ export default function PostTemplate({ data, pageContext }) {
             )}
             <hr className="hr" />
             {post._rawBody && (
-              <article>
+              <>
                 <BlockContent blocks={post._rawBody} />
                 <hr className="hr" />
-              </article>
+              </>
             )}
           </div>
-        </div>
+        </article>
+
         <section style={{ marginTop: `var(--space-xl)` }}>
           <AffiliateLinkDisclaimer />
         </section>
-        <section className="">
+
+        <section>
           <hr className="hr" />
           <NextPreviousPostLinks
             nextPost={pageContext.nextPost}
             previousPost={pageContext.previousPost}
           />
         </section>
+
         {post.ingredients.length > 0 && (
           <section>
-            <div>
-              <hr className="hr" />
-              <h3 className="text--xl">Post Ingredients</h3>
-            </div>
+            <hr className="hr" />
+            <h3 className="text--xl">Post Ingredients</h3>
             <div
               className="content-grid"
               style={{ marginTop: `var(--space-xl)` }}
@@ -119,9 +120,14 @@ export default function PostTemplate({ data, pageContext }) {
                     to={`/ingredients/${ingredient.slug.current}`}
                     style={{ textDecoration: `none` }}
                   >
-                    <div className="card" key={ingredient.text}>
-                      <h3 className="card-heading">{ingredient.text}</h3>
-                    </div>
+                    <ContentCard
+                      heading={ingredient.text}
+                      fluid={
+                        ingredient.image &&
+                        ingredient.image.asset &&
+                        ingredient.image.asset.fluid
+                      }
+                    />
                   </Link>
                 ) : null
               )}

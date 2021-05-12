@@ -2,12 +2,12 @@ import React from "react"
 import Img from "gatsby-image"
 
 import {
+  SEO,
   Layout,
   GoogleMap,
   BlockContent,
   YoutubeEmbedPlayer,
   NextPreviousPostLinks,
-  SEO,
 } from "../components"
 
 import useIsMobile from "../hooks/use-is-mobile"

@@ -4,6 +4,7 @@ const fs = require("fs")
 const { YT_DESCRIPTIONS_DIRNAME } = require("./src/utils/constants")
 const createYTDescription = require("./src/utils/create-yt-description")
 
+// TODO:  createNodeField  for next, prev posts
 exports.onCreateNode = ({ node, getNode, actions }) => {
   // const { createNodeField } = actions
 }

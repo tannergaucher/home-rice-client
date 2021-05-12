@@ -9,6 +9,7 @@ import GoogleMap from "./google-map"
 import BlockContent from "./block-content"
 import YoutubeEmbedPlayer from "./youtube-embed-player"
 import NextPreviousPostLinks from "./next-previous-post-links"
+import ContentCard from "./content-card"
 
 export {
   IngredientsForm,
@@ -22,4 +23,5 @@ export {
   BlockContent,
   YoutubeEmbedPlayer,
   NextPreviousPostLinks,
+  ContentCard,
 }
