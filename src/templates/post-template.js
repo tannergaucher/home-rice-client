@@ -20,7 +20,7 @@ export default function PostTemplate({ data, pageContext }) {
     <Layout>
       <SEO title={`${post.title}`} description={post.subtitle} />
       <div className="container padding">
-        <div className="card" style={{ marginBlockStart: `0` }}>
+        <article className="card" style={{ marginBlockStart: `0` }}>
           {post.youtubeVideoId ? (
             <YoutubeEmbedPlayer
               title={post.title}
@@ -41,7 +41,6 @@ export default function PostTemplate({ data, pageContext }) {
             <h2 className="text--md" style={{ color: `var(--grey)` }}>
               {post.subtitle}
             </h2>
-
             {post.ingredients.length > 0 && (
               <>
                 <IngredientsForm ingredients={post.ingredients}>
@@ -86,13 +85,13 @@ export default function PostTemplate({ data, pageContext }) {
             )}
             <hr className="hr" />
             {post._rawBody && (
-              <article>
+              <>
                 <BlockContent blocks={post._rawBody} />
                 <hr className="hr" />
-              </article>
+              </>
             )}
           </div>
-        </div>
+        </article>
         <section style={{ marginTop: `var(--space-xl)` }}>
           <AffiliateLinkDisclaimer />
         </section>
