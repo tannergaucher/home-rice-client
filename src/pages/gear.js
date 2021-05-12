@@ -1,7 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { Layout, AffiliateLinkDisclaimer, SEO } from "../components"
+import {
+  SEO,
+  Layout,
+  ContentCard,
+  AffiliateLinkDisclaimer,
+} from "../components"
 import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 
 export default function GearPage({ data }) {
@@ -19,20 +24,20 @@ export default function GearPage({ data }) {
               href={getAmazonAffiliateLink(edge.node.ASIN)}
               style={{ textDecoration: `none` }}
             >
-              <div className="card">
-                <h3 className="card-heading">{edge.node.text}</h3>
-                {edge.node.posts && (
-                  <p className="card-text">
-                    {edge.node.posts.length} Post
-                    {`${edge.node.posts.length > 1 ? `s` : ``}`}
-                  </p>
-                )}
-              </div>
+              <ContentCard
+                heading={edge.node.text}
+                text={`${edge.node.posts.length} Post${
+                  edge.node.posts.length > 1 ? `s` : ``
+                }`}
+              />
             </a>
           ))}
         </div>
       </div>
-      <section className="padding" style={{ marginTop: `var(--space-xl)` }}>
+      <section
+        className="padding container"
+        style={{ marginTop: `var(--space-xl)` }}
+      >
         <AffiliateLinkDisclaimer />
       </section>
     </Layout>

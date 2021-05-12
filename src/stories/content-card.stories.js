@@ -10,7 +10,9 @@ export default {
 const Template = args => <ContentCard {...args} />
 
 export const Plain = Template.bind({})
+
 Plain.args = {
-  heading: "hey",
-  text: "WOW",
+  heading: "Card heading",
+  text: "Card text",
+  fluid: "",
 }
