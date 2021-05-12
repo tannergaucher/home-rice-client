@@ -15,4 +15,5 @@ export default function ContentCard({ heading, text, fluid }) {
 ContentCard.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string,
+  fluid: PropTypes.object,
 }

@@ -2,10 +2,10 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import {
-  Layout,
-  AffiliateLinkDisclaimer,
   SEO,
+  Layout,
   ContentCard,
+  AffiliateLinkDisclaimer,
 } from "../components"
 
 export default function IngredientsPage({ data }) {

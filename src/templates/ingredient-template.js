@@ -1,8 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
 
-import { Layout, SEO } from "../components"
+import { Layout, SEO, ContentCard } from "../components"
 import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 
 export default function IngredientPageTemplate({ data }) {
@@ -31,13 +30,11 @@ export default function IngredientPageTemplate({ data }) {
                 to={`/${post.slug.current}`}
                 style={{ textDecoration: `none` }}
               >
-                <div className="card">
-                  {post.mainImage.asset && (
-                    <Img fluid={post.mainImage.asset.fluid} />
-                  )}
-                  <h4 className="card-heading">{post.title}</h4>
-                  <p className="card-text">{post.subtitle}</p>
-                </div>
+                <ContentCard
+                  heading={post.title}
+                  text={post.subtitle}
+                  fluid={post.mainImage.asset && post.mainImage.asset.fluid}
+                />
               </Link>
             ))}
         </div>
