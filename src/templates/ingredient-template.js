@@ -1,7 +1,12 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 
-import { Layout, SEO, ContentCard } from "../components"
+import {
+  SEO,
+  Layout,
+  ContentCard,
+  AffiliateLinkDisclaimer,
+} from "../components"
 import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 
 export default function IngredientPageTemplate({ data }) {
@@ -39,6 +44,13 @@ export default function IngredientPageTemplate({ data }) {
             ))}
         </div>
       </article>
+      <br />
+      <section
+        className="container padding"
+        style={{ marginTop: `var(--space-xl)` }}
+      >
+        <AffiliateLinkDisclaimer />
+      </section>
     </Layout>
   )
 }

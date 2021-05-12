@@ -1,12 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import {
-  SEO,
-  Layout,
-  ContentCard,
-  AffiliateLinkDisclaimer,
-} from "../components"
+import { SEO, Layout, ContentCard } from "../components"
 
 export default function IngredientsPage({ data }) {
   return (
@@ -42,10 +37,6 @@ export default function IngredientsPage({ data }) {
           )}
         </div>
       </div>
-      <br />
-      <section className="padding">
-        <AffiliateLinkDisclaimer />
-      </section>
     </Layout>
   )
 }
