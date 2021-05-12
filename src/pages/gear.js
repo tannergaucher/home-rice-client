@@ -8,13 +8,16 @@ import {
   AffiliateLinkDisclaimer,
 } from "../components"
 import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
+import useIsMobile from "../hooks/use-is-mobile"
 
 export default function GearPage({ data }) {
+  const isMobile = useIsMobile()
+
   return (
     <Layout>
       <SEO title="Gear" />
       <div className="padding container">
-        <h1 style={{ textAlign: `center` }}>Gear</h1>
+        {isMobile && <h1 style={{ textAlign: `center` }}>Gear</h1>}
         <div
           className="content-grid"
           style={{ marginBlockStart: `var(--space-xl)` }}

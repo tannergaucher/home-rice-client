@@ -2,13 +2,16 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import { SEO, Layout, ContentCard } from "../components"
+import useIsMobile from "../hooks/use-is-mobile"
 
 export default function IngredientsPage({ data }) {
+  const isMobile = useIsMobile()
+
   return (
     <Layout>
       <SEO title="Ingredients" />
       <div className="padding container">
-        <h1 style={{ textAlign: `center` }}>Ingredients</h1>
+        {isMobile && <h1 style={{ textAlign: `center` }}>Ingredients</h1>}
         <div
           className="content-grid"
           style={{ marginBlockStart: `var(--space-xl)` }}
