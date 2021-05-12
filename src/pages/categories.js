@@ -2,13 +2,16 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import { Layout, SEO, ContentCard } from "../components"
+import useIsMobile from "../hooks/use-is-mobile"
 
 export default function CategoriesPage({ data }) {
+  const isMobile = useIsMobile()
+
   return (
     <Layout>
       <SEO title="Categories" />
       <div className="padding container">
-        <h1 style={{ textAlign: `center` }}>Categories</h1>
+        {isMobile && <h1 style={{ textAlign: `center` }}>Categories</h1>}
         <div style={{ marginTop: `var(--space-xl)` }}>
           {data.allSanityCategory.edges.map(
             edge =>

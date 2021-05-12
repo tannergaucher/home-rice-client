@@ -5,8 +5,8 @@ import "@semantic-styles/reach-ui"
 
 import "../index.css"
 
+import { EmailCaptureForm, Nav } from "../components"
 import useSiteMetadata from "../hooks/use-site-metadata"
-import { MenuBtn, EmailCaptureForm } from "../components"
 
 export default function Layout({ children }) {
   const { title, description } = useSiteMetadata()
@@ -44,9 +44,7 @@ export default function Layout({ children }) {
             {description}
           </h4>
         </Link>
-        <nav>
-          <MenuBtn />
-        </nav>
+        <Nav />
       </header>
       <main className="main">{children}</main>
       <footer className="container padding">
@@ -82,7 +80,7 @@ export default function Layout({ children }) {
           </h4>
         </Link>
         <section style={{ marginBottom: `var(--space-xl)` }}>
-          <MenuBtn />
+          <Nav />
         </section>
       </footer>
     </div>

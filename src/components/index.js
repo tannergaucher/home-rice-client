@@ -10,6 +10,8 @@ import BlockContent from "./block-content"
 import YoutubeEmbedPlayer from "./youtube-embed-player"
 import NextPreviousPostLinks from "./next-previous-post-links"
 import ContentCard from "./content-card"
+import NavLinks from "./nav-links"
+import Nav from "./nav"
 
 export {
   IngredientsForm,
@@ -24,4 +26,6 @@ export {
   YoutubeEmbedPlayer,
   NextPreviousPostLinks,
   ContentCard,
+  NavLinks,
+  Nav,
 }

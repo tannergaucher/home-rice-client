@@ -78,3 +78,7 @@ a[data-reach-menu-item][data-selected] {
 .brand-text-shadow:focus {
   text-shadow: 0.15vmin 0.15vmin var(--grey);
 }
+
+.nav-link {
+  margin-right: var(--space-lg);
+}
