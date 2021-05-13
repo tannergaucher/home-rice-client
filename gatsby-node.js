@@ -4,11 +4,6 @@ const fs = require("fs")
 const { YT_DESCRIPTIONS_DIRNAME } = require("./src/utils/constants")
 const createYTDescription = require("./src/utils/create-yt-description")
 
-// TODO:  createNodeField  for next, prev posts
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  // const { createNodeField } = actions
-}
-
 exports.createResolvers = ({ createResolvers }) => {
   const resolvers = {
     SanityCategory: {
@@ -88,38 +83,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allPosts = await graphql(`
     query {
-      allSanityPost(sort: { fields: publishedAt, order: DESC }) {
+      allSanityPost(
+        filter: { draft: { eq: false } }
+        sort: { fields: publishedAt, order: DESC }
+      ) {
         edges {
-          next {
-            id
-            title
-            slug {
-              current
-            }
-            mainImage {
-              asset {
-                fluid {
-                  srcSet
-                  sizes
-                }
-              }
-            }
-          }
-          previous {
-            id
-            title
-            slug {
-              current
-            }
-            mainImage {
-              asset {
-                fluid {
-                  srcSet
-                  sizes
-                }
-              }
-            }
-          }
           node {
             title
             subtitle
@@ -141,6 +109,14 @@ exports.createPages = async ({ graphql, actions }) => {
             slug {
               current
             }
+            mainImage {
+              asset {
+                fluid(maxWidth: 1200) {
+                  srcSet
+                  sizes
+                }
+              }
+            }
           }
         }
       }
@@ -153,31 +129,36 @@ exports.createPages = async ({ graphql, actions }) => {
     console.log(`err`, err)
   })
 
-  posts.forEach(edge => {
+  posts.forEach((edge, index) => {
     if (edge.node.youtubeVideoId) {
       createYTDescription(edge)
     }
 
-    if (edge.node.draft === false && !edge.node.places.length) {
+    // Get next and prev post from node. Don't just query next, prev BC not smart to draft bool
+    const previousPost =
+      index === posts.length - 1 ? null : posts[index + 1].node
+    const nextPost = index === 0 ? null : posts[index - 1].node
+
+    if (!edge.node.places.length) {
       createPage({
         path: `/${edge.node.slug.current}`,
         component: path.resolve(`./src/templates/post-template.js`),
         context: {
           slug: edge.node.slug.current,
-          nextPost: edge.previous,
-          previousPost: edge.next,
+          nextPost,
+          previousPost,
         },
       })
     }
 
-    if (edge.node.draft === false && edge.node.places.length === 1) {
+    if (edge.node.places.length === 1) {
       createPage({
         path: `/${edge.node.slug.current}`,
         component: path.resolve(`./src/templates/post-with-place.js`),
         context: {
           slug: edge.node.slug.current,
-          nextPost: edge.previous,
-          previousPost: edge.next,
+          nextPost,
+          previousPost,
         },
       })
     }
