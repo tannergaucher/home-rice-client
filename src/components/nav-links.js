@@ -7,8 +7,6 @@ import { pages } from "../utils/constants"
 export default function FullNav() {
   const location = useLocation()
 
-  console.log(location.pathname.split("/")[1])
-
   return (
     <nav
       style={{ display: `flex`, flexWrap: `wrap`, justifyContent: `center` }}
