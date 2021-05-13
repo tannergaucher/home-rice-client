@@ -3,7 +3,7 @@ const YT_DESCRIPTIONS_DIRNAME = "_yt-descriptions"
 
 const pages = [
   {
-    name: `All Posts`,
+    name: `Posts`,
     location: `/`,
   },
   {

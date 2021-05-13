@@ -16,7 +16,10 @@ export default function FullNav() {
           key={page.location}
           className="nav-link text--md"
           to={page.location}
-          style={{ textDecoration: `underline` }}
+          style={{
+            textDecoration: `underline`,
+            fontStyle: `italic`,
+          }}
           data-is-active={
             location.pathname === page.location ||
             // because nested ingredients page
