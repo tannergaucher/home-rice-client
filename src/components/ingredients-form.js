@@ -3,9 +3,8 @@ import React from "react"
 import { IngredientsFormItem } from "."
 import { AWS_ASSOCIATE_ID } from "../utils/constants"
 
-//
 export default function IngredientsForm({ ingredients, optionalIngredients }) {
-  const amazonIngredients = ingredients.filter(
+  const [amazonIngredients] = ingredients.filter(
     ingredient => ingredient.ASIN !== null
   )
 
@@ -19,6 +18,8 @@ export default function IngredientsForm({ ingredients, optionalIngredients }) {
               width: `100%`,
               marginBottom: `0`,
               marginTop: `var(--space-md)`,
+              position: `sticky`,
+              top: `var(--space-sm)`,
             }}
             className="btn btn-primary"
             type="submit"
