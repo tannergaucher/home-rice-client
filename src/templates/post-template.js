@@ -84,6 +84,7 @@ export default function PostTemplate({ data, pageContext }) {
                 </IngredientsForm>
               </>
             )}
+
             <hr className="hr" />
             {post._rawBody && (
               <>

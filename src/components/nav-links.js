@@ -2,9 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { useLocation } from "@reach/router"
 
-import { pages } from "../utils/constants"
-
-export default function FullNav() {
+export default function FullNav({ pages }) {
   const location = useLocation()
 
   return (

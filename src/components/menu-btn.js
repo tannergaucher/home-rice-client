@@ -5,9 +5,8 @@ import { Menu, MenuList, MenuButton, MenuLink } from "@reach/menu-button"
 import "@reach/menu-button/styles.css"
 
 import useIsMobile from "../hooks/use-is-mobile"
-import { pages } from "../utils/constants"
 
-export default function MyMenuButton() {
+export default function MyMenuButton({ pages }) {
   const isMobile = useIsMobile()
 
   return (
