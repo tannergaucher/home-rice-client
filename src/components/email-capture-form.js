@@ -19,7 +19,7 @@ export default function EmailCaptureForm() {
             className="input"
             type="email"
             placeholder="Email"
-            required="true"
+            required={true}
             aria-label="Email"
             name="newsletter-subscriber"
           />

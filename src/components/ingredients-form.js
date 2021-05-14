@@ -1,8 +1,10 @@
 import React from "react"
 
+import { IngredientsFormItem } from "."
 import { AWS_ASSOCIATE_ID } from "../utils/constants"
 
-export default function IngredientsForm({ ingredients, children }) {
+//
+export default function IngredientsForm({ ingredients, optionalIngredients }) {
   const amazonIngredients = ingredients.filter(
     ingredient => ingredient.ASIN !== null
   )
@@ -28,7 +30,25 @@ export default function IngredientsForm({ ingredients, children }) {
           <hr className="hr" />
         </>
       )}
-      <ul>{children}</ul>
+      <h3>Ingredients</h3>
+      <ul>
+        {ingredients.map((ingredient, i) => (
+          <IngredientsFormItem
+            key={ingredient._id}
+            ingredient={ingredient}
+            order={i + 1}
+          />
+        ))}
+        {optionalIngredients &&
+          optionalIngredients.map((optionalIngredient, i) => (
+            <IngredientsFormItem
+              key={optionalIngredient._id}
+              ingredient={optionalIngredient}
+              order={ingredients.length + i + 1}
+              optional
+            />
+          ))}
+      </ul>
     </form>
   )
 }
