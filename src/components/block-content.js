@@ -22,6 +22,7 @@ const serializers = {
             srcSet={imgData.srcSet}
             sizes={imgData.sizes}
             style={{ borderRadius: `0`, width: `100%` }}
+            alt={node.caption}
           />
           <figcaption
             className="figcaption text--sm"

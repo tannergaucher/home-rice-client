@@ -1,8 +1,8 @@
 const path = require("path")
 const fs = require("fs")
 
-const { YT_DESCRIPTIONS_DIRNAME } = require("./src/utils/constants")
-const createYTDescription = require("./src/utils/create-yt-description")
+// const { YT_DESCRIPTIONS_DIRNAME } = require("./src/utils/constants")
+// const createYTDescription = require("./src/utils/create-yt-description")
 
 exports.createResolvers = ({ createResolvers }) => {
   const resolvers = {
@@ -125,14 +125,14 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = allPosts.data.allSanityPost.edges
 
-  fs.mkdir(path.join(__dirname, YT_DESCRIPTIONS_DIRNAME), err => {
-    console.log(`err`, err)
-  })
+  // fs.mkdir(path.join(__dirname, YT_DESCRIPTIONS_DIRNAME), err => {
+  //   console.log(`err`, err)
+  // })
 
   posts.forEach((edge, index) => {
-    if (edge.node.youtubeVideoId) {
-      createYTDescription(edge)
-    }
+    // if (edge.node.youtubeVideoId) {
+    //   createYTDescription(edge)
+    // }
 
     // Get next and prev post from node. Don't just query next, prev BC not smart to draft bool
     const previousPost =

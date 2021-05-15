@@ -34,7 +34,7 @@ export default function Layout({ children }) {
             {title}
           </h2>
 
-          <h4
+          <h3
             style={{
               textAlign: `center`,
               marginBottom: `var(--space-xl)`,
@@ -42,7 +42,7 @@ export default function Layout({ children }) {
             }}
           >
             {description}
-          </h4>
+          </h3>
         </Link>
         <Nav />
       </header>
@@ -69,7 +69,7 @@ export default function Layout({ children }) {
           >
             {title}
           </h2>
-          <h4
+          <h3
             style={{
               textAlign: `center`,
               marginBottom: `var(--space-xl)`,
@@ -77,7 +77,7 @@ export default function Layout({ children }) {
             }}
           >
             {description}
-          </h4>
+          </h3>
         </Link>
         <section style={{ marginBottom: `var(--space-xl)` }}>
           <Nav />

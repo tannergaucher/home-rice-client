@@ -59,7 +59,7 @@ export default function PostTemplate({ data, pageContext }) {
                       <a
                         href={getAmazonAffiliateLink(gearItem.ASIN)}
                         target="_blank"
-                        rel="noopener"
+                        rel="noreferrer"
                       >
                         {gearItem.text}
                       </a>
@@ -82,8 +82,9 @@ export default function PostTemplate({ data, pageContext }) {
           <AffiliateLinkDisclaimer />
         </section>
 
+        <hr className="hr" />
+
         <section>
-          <hr className="hr" />
           <NextPreviousPostLinks
             nextPost={pageContext.nextPost}
             previousPost={pageContext.previousPost}
@@ -91,33 +92,35 @@ export default function PostTemplate({ data, pageContext }) {
         </section>
 
         {post.ingredients.length > 0 && (
-          <section>
+          <>
             <hr className="hr" />
-            <h3 className="text--xl">Post Ingredients</h3>
-            <div
-              className="content-grid"
-              style={{ marginTop: `var(--space-xl)` }}
-            >
-              {post.ingredients.map(ingredient =>
-                ingredient.slug ? (
-                  <Link
-                    to={`/ingredients/${ingredient.slug.current}`}
-                    style={{ textDecoration: `none` }}
-                    key={ingredient.slug.current}
-                  >
-                    <ContentCard
-                      heading={ingredient.text}
-                      fluid={
-                        ingredient.image &&
-                        ingredient.image.asset &&
-                        ingredient.image.asset.fluid
-                      }
-                    />
-                  </Link>
-                ) : null
-              )}
-            </div>
-          </section>
+            <section>
+              <h3 className="text--xl">Post Ingredients</h3>
+              <div
+                className="content-grid"
+                style={{ marginTop: `var(--space-xl)` }}
+              >
+                {post.ingredients.map(ingredient =>
+                  ingredient.slug ? (
+                    <Link
+                      to={`/ingredients/${ingredient.slug.current}`}
+                      style={{ textDecoration: `none` }}
+                      key={ingredient.slug.current}
+                    >
+                      <ContentCard
+                        heading={ingredient.text}
+                        fluid={
+                          ingredient.image &&
+                          ingredient.image.asset &&
+                          ingredient.image.asset.fluid
+                        }
+                      />
+                    </Link>
+                  ) : null
+                )}
+              </div>
+            </section>
+          </>
         )}
       </div>
     </Layout>
