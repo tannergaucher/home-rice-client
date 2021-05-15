@@ -1,4 +1,5 @@
 import React from "react"
+import Img from "gatsby-image"
 import { getFluidGatsbyImage } from "gatsby-source-sanity"
 import BlockContent from "@sanity/block-content-to-react"
 
@@ -17,16 +18,14 @@ const serializers = {
         sanityConfig
       )
       return (
-        <figure className="figure" style={{ marginBottom: `var(--space-lg)` }}>
-          <img
-            srcSet={imgData.srcSet}
-            sizes={imgData.sizes}
-            style={{ borderRadius: `0`, width: `100%` }}
-            alt={node.caption}
-          />
+        <figure
+          className="figure"
+          style={{ marginBottom: `var(--space-lg)`, borderRadius: `0` }}
+        >
+          <Img fluid={imgData} imgStyle={{ borderRadius: `0` }} />
           <figcaption
             className="figcaption text--sm"
-            style={{ fontStyle: `italic` }}
+            style={{ fontStyle: `italic`, marginTop: `var(--space-sm)` }}
           >
             {node.caption}
           </figcaption>

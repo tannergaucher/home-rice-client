@@ -95,7 +95,7 @@ export default function PostTemplate({ data, pageContext }) {
           <>
             <hr className="hr" />
             <section>
-              <h3 className="text--xl">Post Ingredients</h3>
+              <h3 className="text--xl">More Posts With</h3>
               <div
                 className="content-grid"
                 style={{ marginTop: `var(--space-xl)` }}
