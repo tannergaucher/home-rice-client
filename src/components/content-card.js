@@ -14,9 +14,9 @@ export default function ContentCard({ heading, text, fluid, size }) {
       {fluid && <Img fluid={fluid} />}
       {heading && (
         <h3
-          className={`card-heading ${renderLgCard && `text--xxxl`}`}
+          className={`card-heading ${renderLgCard ? `text--xxxl` : ``}`}
           style={{
-            textAlign: renderLgCard ? "center" : "",
+            textAlign: renderLgCard ? "center" : ``,
             marginTop: renderLgCard ? `var(--space-sm)` : ``,
             marginBottom: renderLgCard ? `0` : ``,
           }}
@@ -26,9 +26,9 @@ export default function ContentCard({ heading, text, fluid, size }) {
       )}
       {text && (
         <p
-          className={`card-text ${renderLgCard && `text--lg`}`}
+          className={`card-text ${renderLgCard ? `text--lg` : ``}`}
           style={{
-            textAlign: renderLgCard ? "center" : "",
+            textAlign: renderLgCard ? "center" : ``,
             marginTop: renderLgCard ? `var(--space-sm)` : ``,
             marginBottom: renderLgCard ? `var(--space-sm)` : ``,
           }}
