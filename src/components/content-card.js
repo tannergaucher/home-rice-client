@@ -7,10 +7,13 @@ import useIsTablet from "../hooks/use-is-tablet"
 export default function ContentCard({ heading, text, fluid, size }) {
   const isTablet = useIsTablet()
 
-  const renderLgCard = size && size === "lg" && !isTablet
+  const renderLgCard = size === "lg" && !isTablet
 
   return (
-    <div className="card">
+    <div
+      className="card"
+      style={{ boxShadow: renderLgCard ? `var(--elevation-3)` : `` }}
+    >
       {fluid && <Img fluid={fluid} />}
       {heading && (
         <h3

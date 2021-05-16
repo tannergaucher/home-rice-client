@@ -35,6 +35,7 @@ export default function Layout({ children }) {
           </h2>
 
           <h3
+            className="text--sm"
             style={{
               textAlign: `center`,
               marginBottom: `var(--space-xl)`,
@@ -70,6 +71,7 @@ export default function Layout({ children }) {
             {title}
           </h2>
           <h3
+            className="text--sm"
             style={{
               textAlign: `center`,
               marginBottom: `var(--space-xl)`,
