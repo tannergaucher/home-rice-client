@@ -22,6 +22,7 @@ export default function ContentCard({ heading, text, fluid, size }) {
             textAlign: renderLgCard ? "center" : ``,
             marginTop: renderLgCard ? `var(--space-sm)` : ``,
             marginBottom: renderLgCard ? `0` : ``,
+            fontWeight: renderLgCard ? 900 : 700,
           }}
         >
           {heading}
