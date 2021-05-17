@@ -1,21 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;800&display=swap");
-
 :root {
-  --serif: "Shippori Mincho B1", serif;
   --accent-1-light: black;
   --accent-2-light: tomato;
   --accent-1-dark: white;
   --accent-2-dark: tomato;
-  --thickness: 0.6vmin;
-}
-
-body {
-  font-family: var(--serif);
-}
-
-.btn,
-.input {
-  font-family: var(--serif);
+  --thickness: 0.7vmin;
 }
 
 /* YT embed container */
