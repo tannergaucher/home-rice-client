@@ -75,7 +75,7 @@ export const pageQuery = graphql`
       ASIN
       image {
         asset {
-          fluid {
+          fluid(maxWidth: 1200) {
             ...GatsbySanityImageFluid
           }
         }
@@ -86,7 +86,7 @@ export const pageQuery = graphql`
         subtitle
         mainImage {
           asset {
-            fluid {
+            fluid(maxWidth: 1200) {
               ...GatsbySanityImageFluid
             }
           }
