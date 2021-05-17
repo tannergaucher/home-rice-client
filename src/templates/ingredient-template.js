@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
+import Img from "gatsby-image"
 
 import {
   SEO,
@@ -21,13 +22,24 @@ export default function IngredientPageTemplate({ data }) {
               getAmazonAffiliateLink(data.sanityIngredient.ASIN)
             }
           >
-            <h1 style={{ textAlign: `center` }}>
-              {data.sanityIngredient.text}
+            <h1 className="text--xxxl" style={{ textAlign: `center` }}>
+              {data.sanityIngredient.text} on Amazon
             </h1>
           </a>
         ) : (
-          <h1 style={{ textAlign: `center` }}>{data.sanityIngredient.text}</h1>
+          <h1 className="text--xxxl" style={{ textAlign: `center` }}>
+            {data.sanityIngredient.text}
+          </h1>
         )}
+
+        {data.sanityIngredient.image && (
+          <Img
+            fluid={data.sanityIngredient.image.asset.fluid}
+            alt={data.sanityIngredient.text}
+          />
+        )}
+        <hr className="hr" />
+        <h2>Posts with {data.sanityIngredient.text}</h2>
         <div className="content-grid" style={{ marginTop: `var(--space-xl)` }}>
           {data.sanityIngredient.posts &&
             data.sanityIngredient.posts.map(post => (
@@ -61,6 +73,13 @@ export const pageQuery = graphql`
       id
       text
       ASIN
+      image {
+        asset {
+          fluid {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
       posts {
         _id
         title

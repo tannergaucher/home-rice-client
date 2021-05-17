@@ -27,7 +27,11 @@ export default function PostWithPlace({ data, pageContext }) {
         </h1>
         <h2
           className="text--md"
-          style={{ textAlign: `center`, marginBlockStart: `0` }}
+          style={{
+            textAlign: `center`,
+            marginBlockStart: `0`,
+            color: `var(--grey)`,
+          }}
         >
           {data.sanityPost.subtitle}
         </h2>

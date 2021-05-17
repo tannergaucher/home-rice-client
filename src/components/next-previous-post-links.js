@@ -24,7 +24,7 @@ export default function NextPreviousPostLinks({ nextPost, previousPost }) {
                 sizes={nextPost.mainImage.asset.fluid.sizes}
                 alt=""
               />
-              <h4 className="card-heading">Next:</h4>
+              <h4 className="card-heading">Next</h4>
               <h4 className="card-text ">{nextPost.title}</h4>
             </div>
           </Link>
@@ -40,7 +40,7 @@ export default function NextPreviousPostLinks({ nextPost, previousPost }) {
                 sizes={previousPost.mainImage.asset.fluid.sizes}
                 alt=""
               />
-              <h4 className="card-heading">Previous:</h4>
+              <h4 className="card-heading">Previous</h4>
               <h4 className="card-text">{previousPost.title}</h4>
             </div>
           </Link>

@@ -38,7 +38,10 @@ export default function PostTemplate({ data, pageContext }) {
           )}
           <br />
           <div className="container only-mobile-padding">
-            <h1 style={{ marginBlockStart: `var(--space-lg)` }}>
+            <h1
+              className="text--xxxl"
+              style={{ marginBlockStart: `var(--space-lg)` }}
+            >
               {post.title}
             </h1>
             <h2 className="text--md" style={{ color: `var(--grey)` }}>

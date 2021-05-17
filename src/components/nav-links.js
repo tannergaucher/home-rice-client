@@ -15,7 +15,6 @@ export default function FullNav({ pages }) {
           className="nav-link text--md"
           to={page.location}
           style={{
-            textDecoration: `underline`,
             fontStyle: `italic`,
           }}
           data-is-active={

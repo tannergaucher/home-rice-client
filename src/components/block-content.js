@@ -25,7 +25,7 @@ const serializers = {
           <Img fluid={imgData} imgStyle={{ borderRadius: `0` }} />
           <figcaption
             className="figcaption text--sm"
-            style={{ fontStyle: `italic`, marginTop: `var(--space-sm)` }}
+            style={{ fontStyle: ``, marginTop: `var(--space-sm)` }}
           >
             {node.caption}
           </figcaption>

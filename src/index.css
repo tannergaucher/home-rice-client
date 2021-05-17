@@ -70,3 +70,7 @@ a[data-reach-menu-item][data-selected] {
 .nav-link {
   margin-right: var(--space-lg);
 }
+
+.figcaption {
+  line-height: 1.66;
+}
