@@ -49,7 +49,7 @@ export default function GearPage({ data }) {
 
 export const pageQuery = graphql`
   query {
-    allSanityGear {
+    allSanityGear(sort: { fields: text }) {
       edges {
         node {
           id
