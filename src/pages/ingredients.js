@@ -23,6 +23,7 @@ export default function IngredientsPage({ data }) {
                 <Link
                   to={`/ingredients/${edge.node.slug.current}`}
                   style={{ textDecoration: `none` }}
+                  key={edge.node.slug.current}
                 >
                   <ContentCard
                     heading={edge.node.text}
@@ -46,7 +47,7 @@ export default function IngredientsPage({ data }) {
 
 export const pageQuery = graphql`
   query {
-    allSanityIngredient {
+    allSanityIngredient(sort: { fields: text }) {
       edges {
         node {
           _id

@@ -82,7 +82,3 @@ a[data-reach-menu-item][data-selected] {
 .nav-link {
   margin-right: var(--space-lg);
 }
-
-.content-grid {
-  /* align-items: center; */
-}

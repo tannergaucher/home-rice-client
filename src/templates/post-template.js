@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 
 import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
-import getSortedIngredients from "../utils/get-sorted-ingredients"
+import getSortedPostIngredients from "../utils/get-sorted-post-ingredients"
 
 import {
   SEO,
@@ -18,8 +18,6 @@ import {
 
 export default function PostTemplate({ data, pageContext }) {
   const post = data.sanityPost
-
-  console.log(getSortedIngredients(post.ingredients))
 
   return (
     <Layout>
@@ -103,7 +101,7 @@ export default function PostTemplate({ data, pageContext }) {
                 className="content-grid"
                 style={{ marginTop: `var(--space-xl)` }}
               >
-                {getSortedIngredients(post.ingredients).map(ingredient =>
+                {getSortedPostIngredients(post.ingredients).map(ingredient =>
                   ingredient.slug ? (
                     <Link
                       to={`/ingredients/${ingredient.slug.current}`}

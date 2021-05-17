@@ -1,8 +1,8 @@
-export default function getSortedIngredients(ingredients) {
+export default function getSortedPostIngredients(ingredients) {
   const withImage = []
   const noImage = []
 
-  ingredients.map(ingredient => {
+  ingredients.forEach(ingredient => {
     if (ingredient.image) {
       withImage.push(ingredient)
     } else {

@@ -12,7 +12,7 @@ import getAmazonAffiliateLink from "../utils/get-amazon-affiliate-link"
 export default function IngredientPageTemplate({ data }) {
   return (
     <Layout>
-      <SEO />
+      <SEO title={data.sanityIngredient.text} />
       <article className="container padding">
         {data.sanityIngredient.ASIN ? (
           <a
