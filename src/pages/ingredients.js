@@ -30,11 +30,11 @@ export default function IngredientsPage({ data }) {
                     text={`${edge.node.posts.length} Post${
                       edge.node.posts.length > 1 ? `s` : ``
                     }`}
-                    fluid={
-                      edge.node.image &&
-                      edge.node.image.asset &&
-                      edge.node.image.asset.fluid
-                    }
+                    // fluid={
+                    //   edge.node.image &&
+                    //   edge.node.image.asset &&
+                    //   edge.node.image.asset.fluid
+                    // }
                   />
                 </Link>
               )
