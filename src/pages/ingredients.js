@@ -27,7 +27,7 @@ export default function IngredientsPage({ data }) {
                 >
                   <ContentCard
                     heading={edge.node.text}
-                    text={`${edge.node.posts.length} post${
+                    text={`${edge.node.posts.length} Post${
                       edge.node.posts.length > 1 ? `s` : ``
                     }`}
                     fluid={
